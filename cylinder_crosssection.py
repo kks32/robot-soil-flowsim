@@ -5,6 +5,7 @@ Plot the profile and show it converging to the angle of repose.
 
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 from sand_simulator import SandSimulator
 
 print("=" * 70)
@@ -32,6 +33,7 @@ print()
 
 # Capture cross-sections at different iterations
 snapshots = []
+snapshots_3d = []  # Store full 3D height fields
 snapshot_iters = [0, 5, 10, 20, 40, 80, 120]
 
 for i in range(max(snapshot_iters) + 1):
@@ -39,7 +41,10 @@ for i in range(max(snapshot_iters) + 1):
         # Extract cross-section through center
         profile = sim.height[center_i, :].copy()
         snapshots.append((i, profile.copy()))
-        
+
+        # Store full 3D height field
+        snapshots_3d.append((i, sim.height.copy()))
+
         # Calculate slope on left side of pile
         max_slope = 0
         for ii in range(1, sim.grid_size-1):
@@ -47,17 +52,42 @@ for i in range(max(snapshot_iters) + 1):
                 for di, dj in [(-1,0), (1,0), (0,-1), (0,1)]:
                     slope = abs((sim.height[ii,jj] - sim.height[ii+di,jj+dj]) / sim.dx)
                     max_slope = max(max_slope, slope)
-        
+
         print(f"Iter {i:3d}: max_slope = {max_slope:.4f} ({np.rad2deg(np.arctan(max_slope)):5.1f}°)")
-    
+
     sim.update_step()
 
 print()
 
-# Create figure with cross-sections
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10))
+# Create figure with 3D view and cross-sections
+fig = plt.figure(figsize=(18, 8))
+gs = fig.add_gridspec(1, 2, width_ratios=[1.2, 1], wspace=0.3)
 
-# --- TOP PANEL: Cross-sections ---
+# --- LEFT PANEL: 3D View ---
+ax_3d = fig.add_subplot(gs[0, 0], projection='3d')
+
+# Get final state for 3D visualization
+final_height = snapshots_3d[-1][1]
+X, Y = np.meshgrid(sim.x, sim.y)
+
+# Plot 3D surface with colormap
+surf = ax_3d.plot_surface(X, Y, final_height, cmap='terrain',
+                          edgecolor='none', alpha=0.9, vmin=0, vmax=cylinder_height)
+
+ax_3d.set_xlabel('X (m)', fontsize=11, labelpad=8)
+ax_3d.set_ylabel('Y (m)', fontsize=11, labelpad=8)
+ax_3d.set_zlabel('Height (m)', fontsize=11, labelpad=8)
+ax_3d.set_title(f'3D View: Final State (Iter {snapshot_iters[-1]})',
+                fontsize=13, fontweight='bold', pad=15)
+ax_3d.view_init(elev=25, azim=45)
+ax_3d.set_zlim(0, cylinder_height * 1.1)
+
+# Add colorbar for 3D plot
+cbar = fig.colorbar(surf, ax=ax_3d, shrink=0.5, aspect=10, pad=0.1)
+cbar.set_label('Height (m)', fontsize=10)
+
+# --- RIGHT PANEL: Cross-sections ---
+ax1 = fig.add_subplot(gs[0, 1])
 x_coords = sim.x
 colors = plt.cm.viridis(np.linspace(0, 1, len(snapshots)))
 
@@ -82,40 +112,14 @@ ax1.plot([center_x - dx_side, center_x], [pile_top - dh_side, pile_top],
 ax1.plot([center_x, center_x + dx_side], [pile_top, pile_top - dh_side], 
          'r--', linewidth=2)
 
-ax1.set_xlabel('X Position (m)', fontsize=12)
-ax1.set_ylabel('Height (m)', fontsize=12)
-ax1.set_title('Cross-Section Evolution: Cylinder → Sand Pile', fontsize=14, fontweight='bold')
+ax1.set_xlabel('X Position (m)', fontsize=11)
+ax1.set_ylabel('Height (m)', fontsize=11)
+ax1.set_title('Cross-Section Evolution: Cylinder → Sand Pile', fontsize=12, fontweight='bold')
 ax1.grid(True, alpha=0.3)
-ax1.legend(loc='upper right', fontsize=10)
+ax1.legend(loc='upper right', fontsize=9)
 ax1.set_ylim(-0.01, cylinder_height * 1.1)
 
-# --- BOTTOM PANEL: Slope vs Position for final state ---
-final_profile = snapshots[-1][1]
-slopes = []
-positions = []
-
-for j in range(1, len(final_profile) - 1):
-    slope = abs((final_profile[j] - final_profile[j-1]) / sim.dx)
-    slopes.append(slope)
-    positions.append(x_coords[j])
-
-ax2.plot(positions, slopes, 'b-', linewidth=2, label='Actual Slope')
-ax2.axhline(y=sim.b_repose, color='r', linestyle='--', linewidth=2, 
-            label=f'Angle of Repose = {sim.b_repose:.4f} (29°)')
-
-# Shade region above angle of repose
-ax2.fill_between(positions, sim.b_repose, max(slopes) * 1.1, 
-                  alpha=0.2, color='red', label='Unstable (slope too steep)')
-
-ax2.set_xlabel('X Position (m)', fontsize=12)
-ax2.set_ylabel('Slope (dh/dx)', fontsize=12)
-ax2.set_title(f'Final Slope Profile (Iteration {snapshot_iters[-1]})', fontsize=14, fontweight='bold')
-ax2.grid(True, alpha=0.3)
-ax2.legend(loc='upper right', fontsize=10)
-ax2.set_ylim(0, max(max(slopes) * 1.1, sim.b_repose * 1.5))
-
-plt.tight_layout()
-plt.savefig('/Users/krishna/Downloads/excavate/cylinder_crosssection.png', dpi=150, bbox_inches='tight')
+plt.savefig('cylinder_crosssection.png', dpi=150, bbox_inches='tight')
 print("Saved: cylinder_crosssection.png")
 
 # Additional analysis plot: slope convergence over iterations
@@ -147,7 +151,7 @@ ax.legend(fontsize=11)
 ax.set_ylim(0, max(max_slopes) * 1.1)
 
 plt.tight_layout()
-plt.savefig('/Users/krishna/Downloads/excavate/slope_convergence.png', dpi=150, bbox_inches='tight')
+plt.savefig('slope_convergence.png', dpi=150, bbox_inches='tight')
 print("Saved: slope_convergence.png")
 
 plt.show()
