@@ -39,8 +39,17 @@ print("  Path: (0.2, 0.5) → (0.8, 0.5)")
 print("  Indent depth: 0.05m (NEGATIVE)")
 
 # The blade creates a DEPRESSION
-sim.push_with_blade(x0=0.2, y0=0.5, x1=0.8, y1=0.5,
-                    indent_depth=0.05, blade_width=0.15)
+sim.push_with_blade(
+    x0=0.2,
+    y0=0.5,
+    x1=0.8,
+    y1=0.5,
+    indent_depth=0.05,
+    blade_width=0.15,
+    surface_height=flat_height,
+    relax_iterations=0,
+    conserve_mass=False,
+)
 
 # Save profile BEFORE stabilization
 center_i = sim.grid_size // 2

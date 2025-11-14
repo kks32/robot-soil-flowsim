@@ -15,6 +15,7 @@ uv pip install -r requirements.txt
 # Run demos
 python cylinder_crosssection.py    # Validates algorithm (pile collapse)
 python test_simple_trench.py        # Trench on flat bed
+python trenching_dynamic.py        # Blade motion + transient flow
 ```
 
 ## Core Files

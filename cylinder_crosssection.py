@@ -35,15 +35,17 @@ print()
 snapshots = []
 snapshots_3d = []  # Store full 3D height fields
 snapshot_iters = [0, 5, 10, 20, 40, 80, 120]
+snapshot_set = set(snapshot_iters)
 
-for i in range(max(snapshot_iters) + 1):
-    if i in snapshot_iters:
+total_iterations = max(snapshot_iters)
+for iter_idx in range(total_iterations + 1):
+    if iter_idx in snapshot_set:
         # Extract cross-section through center
         profile = sim.height[center_i, :].copy()
-        snapshots.append((i, profile.copy()))
+        snapshots.append((iter_idx, profile.copy()))
 
         # Store full 3D height field
-        snapshots_3d.append((i, sim.height.copy()))
+        snapshots_3d.append((iter_idx, sim.height.copy()))
 
         # Calculate slope on left side of pile
         max_slope = 0
@@ -53,9 +55,27 @@ for i in range(max(snapshot_iters) + 1):
                     slope = abs((sim.height[ii,jj] - sim.height[ii+di,jj+dj]) / sim.dx)
                     max_slope = max(max_slope, slope)
 
-        print(f"Iter {i:3d}: max_slope = {max_slope:.4f} ({np.rad2deg(np.arctan(max_slope)):5.1f}°)")
+        print(f"Iter {iter_idx:3d}: max_slope = {max_slope:.4f} ({np.rad2deg(np.arctan(max_slope)):5.1f}°)")
 
     sim.update_step()
+
+# Continue iterating until the pile is fully stabilized so the final slope
+# matches the configured friction angle.
+stabilize_iters = sim.stabilize(max_iterations=1000, tolerance=1e-7, verbose=False)
+final_iter = total_iterations + stabilize_iters
+profile = sim.height[center_i, :].copy()
+snapshots.append((final_iter, profile.copy()))
+snapshots_3d.append((final_iter, sim.height.copy()))
+
+# Report the stabilized slope that now matches the friction angle.
+max_slope = 0
+for ii in range(1, sim.grid_size-1):
+    for jj in range(1, sim.grid_size-1):
+        for di, dj in [(-1,0), (1,0), (0,-1), (0,1)]:
+            slope = abs((sim.height[ii,jj] - sim.height[ii+di,jj+dj]) / sim.dx)
+            max_slope = max(max_slope, slope)
+
+print(f"Iter {final_iter:3d} (stabilized): max_slope = {max_slope:.4f} ({np.rad2deg(np.arctan(max_slope)):5.1f}°)")
 
 print()
 
@@ -66,8 +86,8 @@ gs = fig.add_gridspec(1, 2, width_ratios=[1.2, 1], wspace=0.3)
 # --- LEFT PANEL: 3D View ---
 ax_3d = fig.add_subplot(gs[0, 0], projection='3d')
 
-# Get final state for 3D visualization
-final_height = snapshots_3d[-1][1]
+# Get final (stabilized) state for 3D visualization
+final_iter_num, final_height = snapshots_3d[-1]
 X, Y = np.meshgrid(sim.x, sim.y)
 
 # Plot 3D surface with colormap
@@ -77,7 +97,7 @@ surf = ax_3d.plot_surface(X, Y, final_height, cmap='terrain',
 ax_3d.set_xlabel('X (m)', fontsize=11, labelpad=8)
 ax_3d.set_ylabel('Y (m)', fontsize=11, labelpad=8)
 ax_3d.set_zlabel('Height (m)', fontsize=11, labelpad=8)
-ax_3d.set_title(f'3D View: Final State (Iter {snapshot_iters[-1]})',
+ax_3d.set_title(f'3D View: Final State (Iter {final_iter_num})',
                 fontsize=13, fontweight='bold', pad=15)
 ax_3d.view_init(elev=25, azim=45)
 ax_3d.set_zlim(0, cylinder_height * 1.1)
@@ -158,6 +178,9 @@ plt.show()
 
 print("\n" + "=" * 70)
 print("✓ Cross-section analysis complete!")
-print(f"  Final max slope: {max_slopes[-1]:.4f} ({np.rad2deg(np.arctan(max_slopes[-1])):.1f}°)")
-print(f"  Target (29°):    {sim.b_repose:.4f}")
+final_slope = max_slopes[-1]
+final_angle = np.rad2deg(np.arctan(final_slope))
+target_angle = np.rad2deg(np.arctan(sim.b_repose))
+print(f"  Final max slope: {final_slope:.4f} ({final_angle:.1f}°)")
+print(f"  Target (29°):    {sim.b_repose:.4f} ({target_angle:.1f}°)")
 print("=" * 70)

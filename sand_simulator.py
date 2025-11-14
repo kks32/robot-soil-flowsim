@@ -49,6 +49,70 @@ class SandSimulator:
         self.y = np.linspace(0, domain_size, grid_size)
         self.X, self.Y = np.meshgrid(self.x, self.y)
 
+        # Track tool occupancy so no sand flows into the tool footprint
+        self.tool_mask = np.zeros((grid_size, grid_size), dtype=bool)
+
+    def _valid_index(self, i, j):
+        return 0 <= i < self.grid_size and 0 <= j < self.grid_size
+
+    def _clear_tool_mask(self):
+        self.tool_mask.fill(False)
+
+    def _advance_outside_tool(self, i, j, step_i, step_j):
+        """Advance along a direction until leaving the current tool footprint."""
+        ti, tj = i + step_i, j + step_j
+        if step_i == 0 and step_j == 0:
+            return i, j
+        while self._valid_index(ti, tj) and self.tool_mask[ti, tj]:
+            ti += step_i
+            tj += step_j
+        return ti, tj
+
+    def _deposit_material(self, i, j, amount, forward_step, perp_step):
+        """Distribute removed material in front of the blade."""
+        if amount <= 0:
+            return
+
+        targets = []
+        fi, fj = self._advance_outside_tool(i, j, forward_step[0], forward_step[1])
+        targets.append((fi, fj, 0.6))
+
+        li, lj = self._advance_outside_tool(fi, fj, perp_step[0], perp_step[1])
+        targets.append((li, lj, 0.2))
+
+        ri, rj = self._advance_outside_tool(fi, fj, -perp_step[0], -perp_step[1])
+        targets.append((ri, rj, 0.2))
+
+        remaining = amount
+        for ti, tj, fraction in targets:
+            if fraction <= 0 or not self._valid_index(ti, tj):
+                continue
+            if self.tool_mask[ti, tj]:
+                continue
+            delta = amount * fraction
+            self.height[ti, tj] += delta
+            remaining -= delta
+
+        if remaining > 1e-12:
+            # Fallback: keep on current cell floor so mass is conserved.
+            self.height[i, j] += remaining
+
+    def _apply_tool_displacement(self, footprint, forward_step, target_height):
+        """Remove material inside the footprint and push it forward."""
+        move_i, move_j = forward_step
+        if move_i == 0 and move_j == 0:
+            move_j = 1  # default forward direction
+        perp_i, perp_j = -move_j, move_i
+
+        for (ci, cj) in footprint:
+            self.tool_mask[ci, cj] = True
+            current_height = self.height[ci, cj]
+            if current_height <= target_height:
+                continue
+            excess = current_height - target_height
+            self.height[ci, cj] = target_height
+            self._deposit_material(ci, cj, excess, (move_i, move_j), (perp_i, perp_j))
+
     def compute_flow(self):
         """
         Compute soil flow based on local slopes (Equation 1 from paper).
@@ -91,11 +155,15 @@ class SandSimulator:
         # Iterate over all interior cells
         for i in range(1, self.grid_size - 1):
             for j in range(1, self.grid_size - 1):
+                if self.tool_mask[i, j]:
+                    continue
                 h_center = self.height[i, j]
 
                 # Check all 8 neighbors
                 for (di, dj), dist in zip(neighbors, distances):
                     ni, nj = i + di, j + dj
+                    if not self._valid_index(ni, nj) or self.tool_mask[ni, nj]:
+                        continue
                     h_neighbor = self.height[ni, nj]
 
                     # Compute slope dh/dx (positive if center is higher)
@@ -185,7 +253,21 @@ class SandSimulator:
                     h_add = height * (1 - dist / r_grid)
                     self.height[i, j] += h_add
 
-    def push_with_blade(self, x0, y0, x1, y1, indent_depth, blade_width):
+    def push_with_blade(
+        self,
+        x0,
+        y0,
+        x1,
+        y1,
+        indent_depth=None,
+        blade_width=0.1,
+        *,
+        blade_depth=None,
+        surface_height=None,
+        relax_iterations=3,
+        record_history=False,
+        conserve_mass=True,
+    ):
         """
         Create an indentation (trench) with a rectangular blade from (x0, y0) to (x1, y1).
         The blade simply creates a depression in the heightmap.
@@ -201,6 +283,32 @@ class SandSimulator:
         blade_width : float
             Width of blade
         """
+        # Support legacy keyword `blade_depth`
+        if indent_depth is None:
+            if blade_depth is None:
+                raise ValueError("indent_depth or blade_depth must be specified")
+            indent_depth = blade_depth
+
+        if surface_height is None:
+            surface_height = float(np.max(self.height))
+
+        target_height = max(surface_height - indent_depth, 0.0) if conserve_mass else None
+
+        history = []
+
+        def capture(step_idx):
+            if record_history:
+                history.append(
+                    {
+                        "step": step_idx,
+                        "height": self.height.copy(),
+                        "tool_mask": self.tool_mask.copy(),
+                    }
+                )
+
+        step_counter = 0
+        capture(step_counter)
+
         # Convert to grid coordinates
         i0 = int(y0 / self.domain_size * self.grid_size)
         j0 = int(x0 / self.domain_size * self.grid_size)
@@ -208,43 +316,89 @@ class SandSimulator:
         j1 = int(x1 / self.domain_size * self.grid_size)
 
         # Number of steps along the path
-        n_steps = max(abs(i1 - i0), abs(j1 - j0), 1)
+        n_segments = max(abs(i1 - i0), abs(j1 - j0), 1)
 
-        # Interpolate path
-        i_path = np.linspace(i0, i1, n_steps).astype(int)
-        j_path = np.linspace(j0, j1, n_steps).astype(int)
+        # Interpolate path (include both endpoints)
+        i_path = np.linspace(i0, i1, n_segments + 1).astype(int)
+        j_path = np.linspace(j0, j1, n_segments + 1).astype(int)
 
         # Blade width in grid cells
         w_grid = max(1, int(blade_width / self.domain_size * self.grid_size))
 
-        # Direction of movement (for perpendicular)
-        di = i1 - i0
-        dj = j1 - j0
-        norm = np.sqrt(di**2 + dj**2)
-        if norm > 0:
-            perp_i = -dj / norm
-            perp_j = di / norm
-        else:
-            perp_i = 1.0
-            perp_j = 0.0
+        carved_rows = set()
 
         # Create indentation along path
-        for step in range(n_steps):
+        for step in range(n_segments + 1):
             i_current = i_path[step]
             j_current = j_path[step]
 
-            # Process blade footprint (perpendicular to movement direction)
+            if step < n_segments:
+                dir_i = i_path[step + 1] - i_current
+                dir_j = j_path[step + 1] - j_current
+            elif step > 0:
+                dir_i = i_current - i_path[step - 1]
+                dir_j = j_current - j_path[step - 1]
+            else:
+                dir_i, dir_j = 0, 1
+
+            move_i = int(np.sign(dir_i))
+            move_j = int(np.sign(dir_j))
+            if move_i == 0 and move_j == 0:
+                move_j = 1
+
+            perp_i = -move_j
+            perp_j = move_i
+
+            footprint = []
             for w in range(-w_grid // 2, w_grid // 2 + 1):
-                i_blade = int(i_current + w * perp_i)
-                j_blade = int(j_current + w * perp_j)
+                i_blade = i_current + w * perp_i
+                j_blade = j_current + w * perp_j
 
-                # Check bounds
-                if not (0 <= i_blade < self.grid_size and 0 <= j_blade < self.grid_size):
+                if not self._valid_index(i_blade, j_blade):
                     continue
+                footprint.append((i_blade, j_blade))
 
-                # Create indentation: simply lower the height
-                # This creates instability which will be resolved by erosion
-                self.height[i_blade, j_blade] -= indent_depth
+            self._clear_tool_mask()
+            if conserve_mass:
+                self._apply_tool_displacement(footprint, (move_i, move_j), target_height)
+            else:
+                for (ci, cj) in footprint:
+                    if not self._valid_index(ci, cj):
+                        continue
+                    self.tool_mask[ci, cj] = True
+                    self.height[ci, cj] = max(self.height[ci, cj] - indent_depth, 0.0)
+                    carved_rows.add(ci)
+            step_counter += 1
+            capture(step_counter)
+
+            for _ in range(max(relax_iterations, 0)):
+                self.update_step()
+            step_counter += 1
+            capture(step_counter)
+
+        self._clear_tool_mask()
+
+        if record_history:
+            step_counter += 1
+            capture(step_counter)
+
+        if not conserve_mass and carved_rows:
+            target_height = max(surface_height - indent_depth, 0.0)
+            epsilon = 1e-9
+            for ri in carved_rows:
+                row = self.height[ri]
+                carved_cols = np.where(row < surface_height - epsilon)[0]
+                if carved_cols.size == 0:
+                    continue
+                splits = np.where(np.diff(carved_cols) > 1)[0] + 1
+                segments = np.split(carved_cols, splits)
+                for segment in segments:
+                    start, end = segment[0], segment[-1]
+                    row[start:end + 1] = np.minimum(row[start:end + 1], target_height)
+
+        if record_history:
+            return history
+        return None
 
     def visualize_3d(self, title="Sand Height Map", show=True):
         """
