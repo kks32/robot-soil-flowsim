@@ -114,8 +114,8 @@ ax4.set_ylim(0, flat_height * 1.1)
 plt.suptitle('Trench Formation: Flat Bed → Cut → Avalanche', 
              fontsize=16, fontweight='bold')
 plt.tight_layout()
-plt.savefig('test_simple_trench.png', dpi=150, bbox_inches='tight')
-print("\n✓ Saved: test_simple_trench.png")
+plt.savefig('trench.png', dpi=150, bbox_inches='tight')
+print("\n✓ Saved: trench.png")
 
 plt.show()
 

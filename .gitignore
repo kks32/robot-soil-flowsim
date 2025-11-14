@@ -1,4 +1,5 @@
 # PDF and PNGs
+**/*.DS_Store*
 **/*.png*
 **/*.pdf*
 # Byte-compiled / optimized / DLL files
