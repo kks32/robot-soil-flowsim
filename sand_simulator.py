@@ -17,7 +17,10 @@ class SandSimulator:
     Implements soil erosion based on angle of repose constraint.
     """
 
-    def __init__(self, grid_size=64, domain_size=1.0, angle_of_repose=29.0):
+    def __init__(self, grid_size=64, domain_size=1.0, angle_of_repose=29.0,
+                 use_muI=False, mu_s=None, mu_2=None, I_0=0.20, I_c=0.20,
+                 phi_min=0.55, phi_max=0.64, phi_c=0.60,
+                 dilatancy_rate=0.05, beta_phi=5.0, I_scale=0.5):
         """
         Initialize sand simulator.
 
@@ -51,6 +54,35 @@ class SandSimulator:
 
         # Track tool occupancy so no sand flows into the tool footprint
         self.tool_mask = np.zeros((grid_size, grid_size), dtype=bool)
+
+        self.use_muI = use_muI
+        self.I_0 = I_0
+        self.I_c = I_c
+        self.beta_phi = beta_phi
+        self.I_scale = I_scale
+        self.dilatancy_rate = dilatancy_rate
+        self.eps = 1e-12
+
+        base_mu = np.tan(np.deg2rad(angle_of_repose))
+        self.mu_s = mu_s if mu_s is not None else base_mu
+        self.mu_2 = mu_2 if mu_2 is not None else base_mu
+
+        self.phi_min = phi_min
+        self.phi_max = phi_max
+        self.phi_c = phi_c
+        if self.use_muI:
+            self.phi = np.full((grid_size, grid_size), self.phi_c)
+            self._phi_source = self.phi_c
+        else:
+            self.phi = None
+            self._phi_source = None
+
+    def set_initial_phi(self, phi_value):
+        if not self.use_muI:
+            raise ValueError("Packing fraction tracking is disabled (use_muI=False)")
+        clamped = np.clip(phi_value, self.phi_min, self.phi_max)
+        self.phi[:, :] = clamped
+        self._phi_source = clamped
 
     def _valid_index(self, i, j):
         return 0 <= i < self.grid_size and 0 <= j < self.grid_size
@@ -90,12 +122,23 @@ class SandSimulator:
             if self.tool_mask[ti, tj]:
                 continue
             delta = amount * fraction
-            self.height[ti, tj] += delta
+            self._add_material(ti, tj, delta)
             remaining -= delta
 
         if remaining > 1e-12:
             # Fallback: keep on current cell floor so mass is conserved.
-            self.height[i, j] += remaining
+            self._add_material(i, j, remaining)
+
+    def _add_material(self, i, j, delta):
+        self.height[i, j] += delta
+        if self.use_muI and self.height[i, j] > self.eps:
+            if self._phi_source is None:
+                source_phi = self.phi_c
+            else:
+                source_phi = self._phi_source
+            prev_height = self.height[i, j] - delta
+            mixed = (prev_height * self.phi[i, j] + delta * source_phi) / (self.height[i, j] + self.eps)
+            self.phi[i, j] = np.clip(mixed, self.phi_min, self.phi_max)
 
     def _apply_tool_displacement(self, footprint, forward_step, target_height):
         """Remove material inside the footprint and push it forward."""
@@ -111,7 +154,11 @@ class SandSimulator:
                 continue
             excess = current_height - target_height
             self.height[ci, cj] = target_height
+            old_source = self._phi_source
+            if self.use_muI:
+                self._phi_source = self.phi[ci, cj]
             self._deposit_material(ci, cj, excess, (move_i, move_j), (perp_i, perp_j))
+            self._phi_source = old_source
 
     def compute_flow(self):
         """
@@ -169,17 +216,40 @@ class SandSimulator:
                     # Compute slope dh/dx (positive if center is higher)
                     slope = (h_center - h_neighbor) / dist
 
-                    # Flow only occurs if slope exceeds angle of repose
-                    if slope > self.b_repose:
-                        # Flow from center to neighbor (Equation 1 & 2 from paper)
-                        # q = k*Δx*(dh/dx - b_repose) is the volume flow
-                        # Δh = (1/A) * q where A = Δx² is cell area
-                        # So Δh = (k*Δx/Δx²)*(slope - b_repose) = (k/Δx)*(slope - b_repose)
-                        flow = (self.k / self.dx) * (slope - self.b_repose)
+                    if self.use_muI:
+                        phi_center = self.phi[i, j]
+                        phi_neighbor = self.phi[ni, nj]
+                        I = self.I_scale * max(0.0, slope)
+                        mu_center = self._local_mu(phi_center, I)
+                        mu_neighbor = self._local_mu(phi_neighbor, I)
+                        slope_threshold = 0.5 * (mu_center + mu_neighbor)
+                    else:
+                        slope_threshold = self.b_repose
+                        I = 0.0
+
+                    # Flow only occurs if slope exceeds threshold
+                    if slope > slope_threshold:
+                        flow = (self.k / self.dx) * (slope - slope_threshold)
                         delta_h[i, j] -= flow
                         delta_h[ni, nj] += flow
+                        if self.use_muI:
+                            self._update_phi(i, j, -flow, I)
+                            self._update_phi(ni, nj, flow, I)
 
         return delta_h
+
+    def _local_mu(self, phi_value, I):
+        base_mu = self.mu_s + (self.mu_2 - self.mu_s) * I / (self.I_0 + I + self.eps)
+        phi_factor = np.exp(self.beta_phi * (phi_value - self.phi_c))
+        return base_mu * phi_factor
+
+    def _update_phi(self, i, j, flow_amount, I):
+        if not self.use_muI:
+            return
+        phi_current = self.phi[i, j]
+        phi_eq = self.phi_max - (self.phi_max - self.phi_min) * I / (self.I_c + I + self.eps)
+        delta_phi = self.dilatancy_rate * (phi_eq - phi_current) * abs(flow_amount)
+        self.phi[i, j] = np.clip(phi_current + delta_phi, self.phi_min, self.phi_max)
 
     def update_step(self):
         """
@@ -251,7 +321,7 @@ class SandSimulator:
                 if dist < r_grid:
                     # Conical pile
                     h_add = height * (1 - dist / r_grid)
-                    self.height[i, j] += h_add
+                    self._add_material(i, j, h_add)
 
     def push_with_blade(
         self,
