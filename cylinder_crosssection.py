@@ -139,7 +139,7 @@ ax1.grid(True, alpha=0.3)
 ax1.legend(loc='upper right', fontsize=9)
 ax1.set_ylim(-0.01, cylinder_height * 1.1)
 
-plt.savefig('cylinder_crosssection.png', dpi=150, bbox_inches='tight')
+plt.savefig('figs/cylinder_crosssection.png', dpi=150, bbox_inches='tight')
 print("Saved: cylinder_crosssection.png")
 
 # Additional analysis plot: slope convergence over iterations
@@ -171,7 +171,7 @@ ax.legend(fontsize=11)
 ax.set_ylim(0, max(max_slopes) * 1.1)
 
 plt.tight_layout()
-plt.savefig('slope_convergence.png', dpi=150, bbox_inches='tight')
+plt.savefig('figs/slope_convergence.png', dpi=150, bbox_inches='tight')
 print("Saved: slope_convergence.png")
 
 plt.show()
