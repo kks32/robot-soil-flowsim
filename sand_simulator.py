@@ -94,8 +94,8 @@ class SandSimulator:
             remaining -= delta
 
         if remaining > 1e-12:
-            # Fallback: keep on current cell floor so mass is conserved.
-            self.height[i, j] += remaining
+            # Fallback: force push the mass to the front cell
+            self.height[fi, fj] += remaining
 
     def _apply_tool_displacement(self, footprint, forward_step, target_height):
         """Remove material inside the footprint and push it forward."""
@@ -115,69 +115,78 @@ class SandSimulator:
 
     def compute_flow(self):
         """
-        Compute soil flow based on local slopes (Equation 1 from paper).
-        Uses 8-connectivity (8 neighbors).
-
-        Flow equation: q = k*Δx*(dh/dx - b_repose) when dh/dx > b_repose
-        where k = Δx²/8 for 8-connectivity (from paper Equation 4)
-
-        Returns:
-        --------
-        delta_h : ndarray
-            Height change for each grid cell
+        Vectorized compute_flow using numpy slicing (interior cells only).
+        Returns delta_h same shape as self.height.
         """
-        delta_h = np.zeros_like(self.height)
+        h = self.height
+        N = self.grid_size
 
-        # Define 8-connected neighbors (N, NE, E, SE, S, SW, W, NW)
-        neighbors = [
-            (-1, 0),  # North
-            (-1, 1),  # North-East
-            (0, 1),   # East
-            (1, 1),   # South-East
-            (1, 0),   # South
-            (1, -1),  # South-West
-            (0, -1),  # West
-            (-1, -1)  # North-West
+        # output
+        delta_h = np.zeros_like(h)
+
+        # quick aliases
+        b = self.b_repose
+        coeff = (self.k / self.dx)  # same as before
+
+        # operate on interior region only (indices 1 .. N-2 inclusive)
+        # center slice size: (N-2, N-2)
+        c = h[1:-1, 1:-1]
+        tool_c = self.tool_mask[1:-1, 1:-1]
+
+        # neighbor slices aligned with center c (all shape (N-2, N-2))
+        N_slice  = h[0:-2, 1:-1]   # North
+        NE_slice = h[0:-2, 2:  ]   # North-East
+        E_slice  = h[1:-1, 2:  ]   # East
+        SE_slice = h[2:  , 2:  ]   # South-East
+        S_slice  = h[2:  , 1:-1]   # South
+        SW_slice = h[2:  , 0:-2]   # South-West
+        W_slice  = h[1:-1, 0:-2]   # West
+        NW_slice = h[0:-2, 0:-2]   # North-West
+
+        # corresponding tool masks for neighbor cells
+        tool_N  = self.tool_mask[0:-2, 1:-1]
+        tool_NE = self.tool_mask[0:-2, 2:  ]
+        tool_E  = self.tool_mask[1:-1, 2:  ]
+        tool_SE = self.tool_mask[2:  , 2:  ]
+        tool_S  = self.tool_mask[2:  , 1:-1]
+        tool_SW = self.tool_mask[2:  , 0:-2]
+        tool_W  = self.tool_mask[1:-1, 0:-2]
+        tool_NW = self.tool_mask[0:-2, 0:-2]
+
+        d_diag = self.dx * np.sqrt(2.0)
+        d = [self.dx, d_diag, self.dx, d_diag, self.dx, d_diag, self.dx, d_diag]
+
+        neighs = [
+            (N_slice,  tool_N,  d[0], (slice(0, N-2), slice(1, N-1))),  
+            (NE_slice, tool_NE, d[1], (slice(0, N-2), slice(2, N  ))),   
+            (E_slice,  tool_E,  d[2], (slice(1, N-1), slice(2, N  ))),   
+            (SE_slice, tool_SE, d[3], (slice(2, N  ), slice(2, N  ))),   
+            (S_slice,  tool_S,  d[4], (slice(2, N  ), slice(1, N-1))),  
+            (SW_slice, tool_SW, d[5], (slice(2, N  ), slice(0, N-2))),  
+            (W_slice,  tool_W,  d[6], (slice(1, N-1), slice(0, N-2))),  
+            (NW_slice, tool_NW, d[7], (slice(0, N-2), slice(0, N-2)))  
         ]
 
-        # Distance for each neighbor
-        distances = [
-            self.dx,                # N
-            self.dx * np.sqrt(2),   # NE
-            self.dx,                # E
-            self.dx * np.sqrt(2),   # SE
-            self.dx,                # S
-            self.dx * np.sqrt(2),   # SW
-            self.dx,                # W
-            self.dx * np.sqrt(2)    # NW
-        ]
+        # center destination slice in delta_h
+        center_dest = (slice(1, N-1), slice(1, N-1))
 
-        # Iterate over all interior cells
-        for i in range(1, self.grid_size - 1):
-            for j in range(1, self.grid_size - 1):
-                if self.tool_mask[i, j]:
-                    continue
-                h_center = self.height[i, j]
+        # compute flows for each neighbor and accumulate
+        for neigh_arr, tool_neigh, dist, neigh_dest in neighs:
+            slope = (c - neigh_arr) / dist  # positive if center higher
 
-                # Check all 8 neighbors
-                for (di, dj), dist in zip(neighbors, distances):
-                    ni, nj = i + di, j + dj
-                    if not self._valid_index(ni, nj) or self.tool_mask[ni, nj]:
-                        continue
-                    h_neighbor = self.height[ni, nj]
+            # valid locations: slope > b_repose and neither center nor neighbor are tool-occupied
+            valid = (slope > b) & (~tool_c) & (~tool_neigh)
 
-                    # Compute slope dh/dx (positive if center is higher)
-                    slope = (h_center - h_neighbor) / dist
+            if not np.any(valid):
+                continue
 
-                    # Flow only occurs if slope exceeds angle of repose
-                    if slope > self.b_repose:
-                        # Flow from center to neighbor (Equation 1 & 2 from paper)
-                        # q = k*Δx*(dh/dx - b_repose) is the volume flow
-                        # Δh = (1/A) * q where A = Δx² is cell area
-                        # So Δh = (k*Δx/Δx²)*(slope - b_repose) = (k/Δx)*(slope - b_repose)
-                        flow = (self.k / self.dx) * (slope - self.b_repose)
-                        delta_h[i, j] -= flow
-                        delta_h[ni, nj] += flow
+            # compute q only where valid
+            q = np.zeros_like(slope)
+            q[valid] = coeff * (slope[valid] - b)
+
+            # accumulate: center loses q, neighbor gains q
+            delta_h[center_dest] -= q
+            delta_h[neigh_dest] += q
 
         return delta_h
 
