@@ -1,0 +1,738 @@
+Granular Matter (2025) 27:14
+https://doi.org/10.1007/s10035-024-01489-1
+
+    RESEARCH
+
+
+
+Understanding shear bands in granular media through in-plane
+ploughing experiments at different strain rates
+Sudhanshu Rathore1            · Abhijit Hegde1       · Tejas G. Murthy1
+
+Received: 20 May 2024 / Accepted: 14 November 2024 / Published online: 9 December 2024
+© The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2024
+
+
+Abstract
+An experimental study is made to understand the deformation characteristics and failure mechanism of sands subjected
+to severe plastic deformation in the ploughing model setup of in-plane orthogonal cutting. The cutting experiments were
+performed on sands over 3 orders of strain rates. High-speed imaging and concomitant image analysis were performed
+using the Particle Image Velocimetry algorithm to obtain the whole field velocity measurements of the material flow. The
+velocity field maps of the near tool tip region demonstrate a sharp change in the motion of sand particles along with the
+formation of a dead zone. The effective strain rate maps show regions of intense localized plastic deformation- termed
+“shear bands”. The inclination angle of these bands evolved periodically with time and showed a decreasing trend due
+to an increase in the surcharge and effective depth of cut. The morphology and overall characteristics of these mesoscale
+structures (shear bands) do not change significantly with strain rate. The cutting force signatures were oscillatory and
+suggested cyclic material softening (dilation)—hardening (compaction) ahead of the tool, which is also reflected in the
+periodic repositioning of shear bands. The limit equilibrium-based model was adequate to predict the tool-cutting forces
+well, even with the significant variation in strain rates.
+
+Keywords Soil cutting · Image analysis · Sands · Shear bands · Deformation characteristics · Strain rates
+
+
+1 Introduction                                                              quasi-static, intermediate, HSR, and extreme HSR based on
+                                                                            the magnitudes encountered in the engineering operations
+Geomaterials are subjected to a wide range of strains and                   in the infrastructure/civil engineering industry (Fig. S1
+strain rates as they interact with foundations, in earth                    of Online Resource1 presents a compilation of strain rate
+structures, and during earth-moving operations. More spe-                   regimes in various operations in the infrastructure industry).
+cifically, they are subjected to intermediate and high strain                  Among the suite of laboratory elemental tests, the triax-
+rates (HSR) during projectile penetration [1, 2], dredging                  ial tests at HSR [5, 9, 10], HSR uniaxial compression tests
+[3], ploughing [4], pile driving [5] and tunnel excavation                  [11–14] and direct shear tests [15, 16] have contributed to
+[6]. While it is well known that soils are subjected to a wide              the understanding of strain rate effects in sands. Tests such
+range of strain rate regimes, studies on soils in moderate                  as gravity drop set-up, split hopkinson pressure bar (SHPB)
+to HSR regimes have been few and far between [7, 8]. In                     apparatus, etc., have also been used to explore the response
+general, strain rate regimes are categorized into – creep,                  of sands under a wide range of strain rates (however, at
+                                                                            small strains). Yet, a clear consensus on the influence of
+                                                                            strain rate on various aspects of the mechanical response
+                                                                            of sands has not yet emerged. While some researchers have
+     Tejas G. Murthy
+     tejas@iisc.ac.in                                                       observed an increased strength and stiffness with increas-
+                                                                            ing strain rates [8, 9, 17–19], others report little effect on
+     Sudhanshu Rathore
+     sudhanshur@iisc.ac.in                                                  the shear strength [15]. Such conflicting views of the influ-
+                                                                            ence of strain rates are noted immaterial of drainage condi-
+     Abhijit Hegde
+     agastyavishwa10@gmail.com                                              tions [10, 17]. In the context of strain rate effects, “TESRA”
+                                                                            (Temporary Effect of Strain Rate and strain Acceleration)
+1
+     Department of Civil Engineering, Indian Institute of Science,          behaviour has been observed in the stress–strain response of
+     Bangalore, India
+
+
+                                                                                                                               13
+14 Page 2 of 16                                                                                                   S. Rathore et al.
+
+
+sands but only under small strain regimes and in the range of     the draft forces have all been extensively examined through
+10–5 to 1/s strain rates [20, 21]. Though it is quite common      table-top laboratory and in-situ field experiments [31–33].
+to assume that the strain rate effects are usually negligible     Some classic experiments [32, 34–36] have shown that the
+on the mechanical properties of dry sand, Tatsuoka [22]           draft force (horizontal cutting force) and vertical lift force
+has shown that the rate effects at large strains are far more     vary as the square of velocity increment. Luth and Wismer
+significant.                                                      [36] conducted cutting experiments in air-dried sands at dif-
+    As a consequence of past experimental data on the HSR         ferent densities, speeds of cut, and depths of cut. Horizontal
+response of sands, several constitutive models have been          and vertical force prediction equations were developed from
+developed, which are classified into empirical, rheological,      the experimental data using dimensional analysis and curve
+and general stress–strain-time models, for providing practi-      fitting. The inertial force term (v2/gl) was found to signifi-
+cal solutions for time-dependent engineering problems [23].       cantly influence the tool reaction forces. A similar increase
+Some of these phenomenological models can be used only            in the magnitude of the cutting or draft force has also
+over a limited range of physical parameters such as density,      been reported by Grinstead [37] and Palmer [32] with the
+mineralogy, and particle morphology [23, 24]. A non-linear        increase in depth of cut and speed in submerged sands due
+three component (hypo-elastic, plastic, and viscous) model        to a decrease in pore water pressure as a result of increased
+was formulated by Tatsuoka et al. [20] to simulate rate sen-      dilation. Notable theoretical models by Reece [38], McK-
+sitive behaviour of sands. This model adequately captures         eys and Ali [39], Hambleton et al. [40], Kashizadeh et al.
+the rate-sensitive behaviour but only at the macro level.         [41]; numerical models using finite element method (FEM)
+Very few studies have explored the mesoscale response at          by Yong and Hanna [42], Abo-Elnor et al. [43] and discrete
+higher strain rates through the manifestation of shear bands.     element analysis (DEM) like Nouguier et al. [44], Coetzee
+In the recent past, folding in the effects of strain rate into,   [45] have proved insightful in providing load (or force)
+a modified critical state framework has been proposed by          information for mechanical operations such as ploughing,
+Mukherjee et al. [25], who have been able to successfully         trenching, excavation, dredging etc. In a recent study of the
+replicate the formation of shear bands in sands under plane       ploughing of pipelines, it has been documented that despite
+strain conditions. The rate-dependent response was pre-           the concerns of scaling in 1-g models, they are extraordi-
+dicted at higher strain rates, however, under small deforma-      narily insightful in carrying out parametric studies [46].
+tions. The effect of higher strain rates at large deformations        The orthogonal cutting framework allows subjecting the
+has neither been captured by these models nor has been            geo-material to severe plastic deformation under a wide
+explored through experiments. In this regard, the orthogonal      range of strains and strain rates—in addition to applying
+cutting is a unique framework that helps in understanding         a combination of compression and shear stress states. The
+macro as well as meso-level kinematics and kinetics of sand       orthogonal cutting framework allows for studying deforma-
+deformation.                                                      tion inside a “localized shear band” as has been described
+    Orthogonal cutting is a mechanical process wherein a          in detail by Hegde and Murthy [47] and Hegde [48]. Recent
+plane-faced tool cuts material with its cutting edge orthogo-     attempts in extracting localization from macro test data
+nal to the direction of relative motion of the tool and mate-     through simplifying assumptions (such as the one proposed
+rial. While SHPB has been extensively used for the HSR            by Le et al. [49] can be overcome through this orthogonal
+characterization of metals, Singh et al., [26] have used the      cutting framework. The uniqueness of this framework lies
+orthogonal cutting process as an interesting alternative tech-    in the independent control of strain by changing the tool
+nique for the dynamic characterization of lead-free solder        geometry and rake angle and also in the independent control
+for a wider range of strain rates (0.32–48/s). Jaspers and        of strain rate by changing the cutting speed [47]
+Dautzenberg [27] suggest that the metal cutting can achieve           This experimental study carefully examines the effect
+strain rates of range 1–106/s in the material with suitable       of intermediate to high strain rates on the deformation of
+modifications in the experimental setup. Orthogonal metal         sands, using orthogonal cutting conditions. This configura-
+cutting experiments in conjunction with analytical or finite      tion allows us to examine the combined effects of strain and
+element modelling have been used to extract various con-          strain rate. This also allows us to examine an intermediate
+stitutive properties for the prediction of response under a       length scale of a shear band (meso scale). Characteristics
+range of strain rates [28–30]. However, orthogonal cutting        of the shear band are examined critically through a suite of
+in soils, often examined in the context of ploughing, dredg-      experiments over a wide range of strain rates. The kinemat-
+ing, etc., has focused mostly on the efficient design of tools    ics of cutting have been clearly elucidated as a function of
+with the optimization of the overall engineering operation        strain rate through the analysis of high-speed images. Char-
+[31]. The influence of geometric constraints such as depth of     acteristics of the shear band, including the geometry, are
+cut, speed of tool traverse, and rake angle of the plough on      examined in order to quantify the presence of strain rates
+
+
+
+13
+Understanding shear bands in granular media through in-plane ploughing experiments at different strain…                       Page 3 of 16 14
+
+
+effects on the strain localization behaviour. The experimen-
+tal measurements of cutting forces were carried out at differ-
+ent loading rates and compared to their respective analytical
+estimations using a limit equilibrium based model that
+incorporates the inertial effects.
+
+
+2 Materials and methods
+
+A 1 g physical model test of in-plane orthogonal cutting is
+used to study the mechanical response of dry sands in inter-
+mediate to high strain rates (10–2–101/s) and under severe
+plastic deformation.
+
+2.1 Machining setup: 2-dimensional orthogonal                            Fig. 1 Schematic of the lab scale experimental setup for plane strain
+cutting                                                                  (2-D) cutting in the model granular geomaterial
+
+
+A test box fabricated using aluminium was used in these
+cutting experiments. The dimensions of the box were
+555 mm × 160 mm × 15 mm. The top face of the box was
+left open for tool insertion, while the front face was fitted
+with a glass plate for imaging. This box was mounted on a
+computer numerical control (CNC) machine (Ace Micro-
+matic Pvt. Ltd) to carry out controlled cutting experiments.
+A sharp cutting tool made from high-speed (HS) steel, with
+an equal width (B) and thickness of 15 mm, was attached
+to the CNC tool holder and then carefully lowered into the
+box. The width of the tool was matched with the width of
+the box to ensure no side flow of the sand. As very high
+velocities or speeds of cut were used in the experiments to
+explore the influence of strain rate, a slight tolerance was             Fig. 2 Grain size distribution of quartz sand used in experiments
+introduced to the tool width—i.e. the tool width was about
+0.1 mm smaller than the width of the box. This tolerance                 experiments and a PCO1200hs CMOS (PCO Imaging Inc.)
+was smaller than the mean particle diameter of the sand.                 camera system was used in this work to acquire high-speed
+The translation stage, on which the box was mounted, was                 images of the cutting process. Images were acquired at mod-
+moved only in the horizontal direction and the tool was                  erate to high speeds, based on vc. Digital images obtained
+moved vertically. The required quantity of sand was then                 were 1024 × 1240 pixels resulting in a resolution of 193 μm
+filled in the box using a funnel at the top face and was com-            (magnification of 0.2 mm/px) and kept unchanged for all the
+pacted layer by layer corresponding to the dry density of                experiments with different speeds. The field of view around
+1.5 g/cm3 (kept constant for all the experiments). The mini-             the tool was kept constant for understanding the deforma-
+mum and maximum void ratio of the sand was 0.53 and 0.97                 tion of sand around the tool. A schematic of the experimen-
+[50], hence the relative density of the sand for these experi-           tal setup is presented in Fig. 1. Details of the experimental
+ments was 45.5%. With the tool fixed at a certain depth in               setup are also available elsewhere [48].
+the sand, the box was moved at different constant horizontal
+velocities (vc) to cut the material.                                     2.3 Model granular material
+
+2.2 Optical setup                                                        Quartz sand was used as the model granular material in
+                                                                         these 2-D plane strain orthogonal cutting experiments.
+The sand particles were illuminated using an LED light                   The specific gravity of model quartzitic sand used in these
+source to capture images, which were further used for image              experiments was 2.65. The sand was uniformly graded
+analysis. Uniform lighting was ensured on the sand so that               sand (Cu = 3.1 and Cc = 1.2) with a size range of 75 μm to
+high-resolution, high speed images were obtained during                  1 mm with a median diameter (Dp) of 0.45 mm (Fig. 2).
+
+
+
+                                                                                                                                   13
+14 Page 4 of 16                                                                                                         S. Rathore et al.
+
+
+The detailed material characterization for the sand used in       Resource2 of the supplementary material. The snapshots
+this study is available [50, 51]. The roundness and sphe-         of 2-dimensional cutting in sands at 6 equal intervals of
+ricity of the particles are 0.17 and 0.42, respectively. The      time are shown in Fig. 3a, along with its respective veloc-
+critical state friction angle for this sand was 40° under plane   ity field contours obtained from the PIV analysis, presented
+strain conditions and was obtained from a series of hollow        in Fig. 3b. The characteristics of velocity contour maps are
+cylinder torsion tests on the same quartz sand reported in        discussed in detail below.
+[50, 51].
+                                                                  3.1 Velocity profiles
+2.4 Image analysis
+                                                                  The incremental horizontal and vertical displacements per
+The high-speed and high-resolution images obtained dur-           unit time are obtained through PIV analysis of successive
+ing the cutting process were analysed using the PIV algo-         images captured during the cutting experiment. The resul-
+rithm to track the motion of sand around the tool. PIV is         tant incremental velocity vector fields in sands for different
+a digital image analysis technique which is used to obtain        speeds of cut is shown in Fig. 4. A movie of the velocity field
+in-plane velocity fields (successive instantaneous displace-      map for the case of 100 mm/min cutting speed is presented
+ments per unit time) through 2-D cross-correlation of suc-        in Online Resource3. The velocity fields are presented by
+cessive images [52]. PIV analysis requires a good contrast        normalizing with vc (i.e., ranging from 0–1). These contour
+of the markers (seed particles/trackers) in order to track the    plots are obtained at the time instance corresponding to a
+traverse of these markers encapsulating or representing the       traverse distance of 3D in sands at different speeds. These
+movement of the entire ensemble. Calibration of the code          contour plots clearly show that the sand particles undergo a
+and estimates of the error of the PIV analysis were carried       sharp change in the direction and magnitude of their motion
+out and the details are presented in [47,48].                     as they reach the vicinity of the fixed cutting tool. Initially,
+                                                                  all the particles in the bulk traverse horizontally, along with
+                                                                  the box, and have zero magnitude in the vertical direction.
+3 Results and discussion                                          As this sand ensemble approaches the tool, the sand par-
+                                                                  ticles climb up the tool rake face, with a gradual reduction
+A suite of orthogonal cutting experiments was carried out         in the resultant velocity magnitude evident in Fig. 4. The
+on quartz sands to understand the response of sands under         contour of the velocity field was overlapped with a quiver
+a wide range of strain rates. The tests were carried out at a     plot indicating the direction of traverse of the sand ensem-
+fixed initial depth of cut (D = 20 mm) and tool rake angle        ble. At the region of this bifurcation around the tooltip, an
+(β = 0°). The prepared bed of sand traversed around a cut-        approximate wedge-shaped pile of sand remained adhered
+ting tool and the resulting sand deformations were imaged         to the tool rake face, with a nearly zero resultant velocity
+and analysed. The deformation characteristics of the sand in      (forming a narrow dead zone) through the cutting process
+the vicinity of the tool are of interest in this study.           (shown in Fig. 4-(50 v)) through all the cutting speeds. For
+   The results and discussion of this experimental work are       the interface conditions used in this slew of tests, the dead
+presented at two different length scales. At the ensemble         zone size is, by and large, independent of the speed of cut-
+(macro) scale, the deformation patterns are observed and          ting. The overall characteristics of the velocity field do not
+quantified through velocity fields, strain rate fields, volu-     change with changing cutting speeds.
+metric strains, and other kinematics. Following this, at the
+mesoscale, the morphological features of regimes of bifur-        3.2 Effective strain rate
+cations or shear bands were exclusively extracted and were
+studied as a function of strain rate. Lastly, cutting forces      The regimes of velocity bifurcations are further investigated
+were measured experimentally and compared against the             through the measure of effective strain rate. The effective
+theoretically estimated forces using an existing limit equi-      strain rate ( ε̇eff ) is computed by calculating the gradient of
+librium based model that incorporates the effect of strain        the components of the velocity. Regions of high strain rates
+rate. Hence, the suitability of this model was examined at        indicate a spatial jump in the velocity. The strain rate com-
+the ensemble scale for this suite of experiments.                 ponents computed are ε̇xx , ε̇yy , and ε̇xy (or ε̇yx ). The ε̇eff
+   In this experimental program, the sand was cut at speeds       was computed using Eq. (1), and its contours are presented
+of 10 (represented henceforth as, v), 100 (10 v), 500 (50 v),     in Fig. 5.
+1000 (100 v), 5000 (500 v), and 10,000 (1000 v) mm/min,
+and up to a traverse distance of 100 mm (5 times D or 5D).
+                                                                             
+                                                                             4 1                                 3             
+                                                                  ε̇eff =         (ε̇xx − ε̇yy )2 + ε̇2xx + ε̇2yy + (ε̇xy + ε̇yx)2 (1)
+An illustrative cutting movie can be found in the Online                     9 2                                   4
+
+
+
+
+13
+Understanding shear bands in granular media through in-plane ploughing experiments at different strain…                        Page 5 of 16 14
+
+
+
+
+Fig. 3 aThis figure illustrates the progression of in-plane orthogonal   show the deformed configurations of sands when the tool has moved a
+cutting in sands running through a sequence of raw images (i-ii-iii-     distance of (i) ~ 0, (ii)1D, (iii)2D, (iv)3D, (v)4D and (vi)5D. Figure b
+iv-v-vi) captured during the cutting at 100 mm/min. These images         shows the velocity field contour plots respective to (a)
+
+The contour map of the strain rate field shows three major               free surface of the pile due to repose and interface between
+regions. Online Resource4 (movie of effective strain rate                tool and sand show low strain rates. This localized region of
+field) shows the typical evolution of effective strain rate              high intensity strain rates can be thought of as shear bands
+field during cutting at 100 mm/min, or 10 v. Most of the                 [40, 47, 48]. These shear bands or regions of high strain
+sand ensemble, especially the region below the tooltip, has              rates also signify velocity jumps occurring over a small spa-
+zero or negligible strain rates, secondly, a localized narrow            tial window. The shear bands are by and large straight in
+region of high strain rate magnitude is observed to emanate              these experiments. The sand particles reposing under grav-
+from the tooltip and reaches the free surface, and lastly, the           ity at the pile’s surface are also seen as a diffuse zone of
+
+
+
+                                                                                                                                    13
+14 Page 6 of 16                                                                                                  S. Rathore et al.
+
+Fig. 4 Velocity contour plots
+for cutting in sands with cut-
+ting speed (vc) of—(i)v, (ii)10v,
+(ii)50v, (iii)100v and (iv)500v and
+(iv)1000v at the traverse distance
+of 3D
+
+
+
+
+non-zero strain rate in these effective strain rate contour       seen in Fig. 3a and Online Resource2. The shearing occurs
+maps. Similarly, another region of low-intensity strain rate      over a much larger region resulting in an overall increase
+is seen between the sand and tool interface, which also           in the thickness of the shear band, and also in the inclina-
+encompasses a dead zone, highlighted in Fig. 4.                   tion angle until it reaches a value of around 35°. With fur-
+   Figure 6 presents a continuous sequence of images depict-      ther traverse of the tool, the formation of a secondary shear
+ing the evolution of a single shear band with the progress of     band with a lower inclination angle is seen to form. When
+cutting. The different features of the shear bands, such as the   the thickness of the primary shear band reaches a critical
+inclination angle with respect to the cutting direction and       value, close to 16Dp, there is a complete switch where the
+thickness are observed to fluctuate in time. As the cutting       secondary band now becomes dominant while the primary
+process progresses, the repose of the sand ahead of the tool      shear band completely disappears. This process repeats in
+causes the surcharge (i.e. the depth of cut) to increase, as      a cyclic manner during the entire course of cutting and can
+
+
+
+13
+Understanding shear bands in granular media through in-plane ploughing experiments at different strain…                              Page 7 of 16 14
+
+
+
+
+Fig. 5 Effective strain rate field contour plots for cutting in sands at different cutting speeds and at a traverse distance of 3D
+
+
+
+
+                                                                                                                                         13
+14 Page 8 of 16                                                                                                                 S. Rathore et al.
+
+
+
+
+Fig. 6 A sequence of strain rate contour plots demonstrating the transition of shear bands from one in active mode to another incipient inactive
+mode (also observed in [53, 54]) across 0.16D (= 3.26 mm) tool displacements while cutting at 100 mm/min, or 10v
+
+
+
+
+13
+Understanding shear bands in granular media through in-plane ploughing experiments at different strain…                   Page 9 of 16 14
+
+
+be clearly seen in the effective strain rate movie –Online                The maximum magnitudes from these cumulative effective
+Resource4. Kobayakawa et al. [53] also reported similar                   strain maps were extracted and studied. In Fig. 7, the peak
+observations in their DEM simulations of plate drag experi-               cumulative strains increased with increased distance of tra-
+ments in dense granular materials. The experimental studies               verse, and a region of transition can be seen in the magni-
+by Selig and Nelson [54] also observed this phenomenon of                 tude of peak strain accumulation where a reduction is seen
+the shift of shear failure path after regular intervals of tool           in the peak cumulative strain with a change in velocity of
+displacement in 2-D cutting in sands and other soil types.                cutting from 500 to 1000 mm/min. This transition is seen
+While this cutting process continues, the sand moves up the               at all lengths of traverse—1D, 2D, 3D, 4D and 5D. This
+rake face of the tool up to a certain height and reposes con-             is perhaps a zone of transition from an intermediate strain
+tinuously. This constant repose of the sand also changes the              rate regime to a high strain rate regime, and hence across
+overall depth of cut through this process (Refer to Fig. S2 in            this regime, the material response became stiffer. Due to the
+the Online Resource1 and Online Resource2).                               absence of data points between these two speeds, this region
+                                                                          of transition was not clearly discernable.
+3.3 Cumulative effective strains and volumetric                               The global change in the volume of sand is computed
+strains                                                                   at different tool displacements during cutting. Figure 8a-
+                                                                          (i) shows the undeformed configuration, while Fig. 8a-(ii)
+As this cutting process is initiated, a small transient state             shows the deformed configuration post cutting. For a given
+exists wherein the initiation of the shear band occurs in the             displacement of u and horizontal pile extent of l, where
+vicinity of the tooltip. However, a stable occurrence of shear            u ranges from 0 to 5D here, the volume per unit width of
+banding quickly emerges in this process [55]. The accumu-                 undisturbed sand ( Vundef ) in front of the tool is (u + l) × D.
+lated deformation in the sand through this cutting process is             After the tool displacement of u, the volume of deformed
+quantified through the calculation of both effective strains              sand ( Vdef ) accumulated above the horizontal level of the
+and volumetric strains. The cumulative effective strains are              tooltip is computed using image analysis. The percentage
+calculated through the integration of the effective strain rates          change in bulk volume of sand is computed using Eq. (2).
+respectively along a specific trajectory, which is obtained
+through the integration of incremental displacements. This                ∈vol = (Vdef − Vundef ) /Vundef ∗ 100 (2)
+calculation of cumulative effective strains is presented in
+detail elsewhere [47]. An illustrative movie for the evolu-               The plot in Fig. 8a shows the volumetric strains for differ-
+tion of cumulative strain rate during cutting at 100 mm/min               ent cutting speeds (or respective strain rates as shown in
+is attached as Online Resource5.                                          Fig. 9) and at different stages of cutting. The overall volu-
+   The cumulative effective strain fields for different speeds            metric change is dilative irrespective of cutting speeds. It
+of traverse at 3D are shown in Fig. S3 (Refer to the Online               can also be seen that the dilation is higher for the lower cut-
+Resource1). The region of sand around the tooltip shows                   ting speeds while it is relatively lesser for the case of higher
+higher values of strain when compared to the sand in the                  strain rates. This could be due to the stiffer response of sands
+pile. A series of band-like features are visible in the cumula-           at higher cutting speeds, as also noticed in Fig. 7. Moreover,
+tive effective strain contour map. These band-like features of            the observed region of transition, as indicated in Fig. 7, is
+high strain are interspersed by a sliver of low-strain regions.           consistent with volume change behaviour in Fig. 8a.
+                                                                             It can be observed from the images and the evolving
+                                                                          velocity fields that there is a periodic accumulation of sand
+                                                                          on the tool face, followed by repose. The sand pile incli-
+                                                                          nation ahead of the tool rake face or the dynamic repose
+                                                                          angle (α) increases initially and then reaches a steady value
+                                                                          of around 40° (which is also the critical state friction angle
+                                                                          of sands under plane strain conditions [50]) at a traverse dis-
+                                                                          tance of 1–1.5D—indicating that the displaced material has
+                                                                          attained its steady shape [55]. This evolution of sand-pile
+                                                                          inclination was found to be independent of the speed of cut
+                                                                          (Refer to Fig. S4 in the Online Resource1).
+                                                                             In order to determine volume change during steady state
+                                                                          cutting ( ∈st
+                                                                                     vol ) for a given cutting speed, the ∈vol values for
+Fig. 7 Plot showing the variation of peak cumulative strains as a func-   tool displacements of 1.5D to 5D at an interval of 0.5D, as
+tion of cutting speeds at the tool displacements of—1D, 2D, 3D, 4D        shown in Fig. 8a, were considered. The ∈vol corresponding
+and 5D
+
+
+                                                                                                                               13
+14 Page 10 of 16                                                                                                    S. Rathore et al.
+
+Fig. 8 a Volumetric strains at
+different stages of cutting. Inset:
+Schematic of volume change dur-
+ing cutting showing (i) Unde-
+formed state and (ii) Deformed
+state after tool displacement of ub
+Mean volume change with refer-
+ence to the steady state achieved
+at ~ 1.5D
+
+
+
+
+to 1.5D was considered as the reference for the initiation of     between contraction and dilation. The presented analy-
+steady state and was subtracted from the subsequent values        sis does not indicate any specific pattern of this response.
+of the ∈vol at 2D, 2.5D and so on. The mean and standard          While the experiment is truncated at about 5D for the length
+deviation from these values were estimated and plotted in         of the cut—further cycles of small amounts of dilation and
+Fig. 8b for different cutting speeds. Considering the volume      contraction are expected– with further cutting. While small
+change at the deformed state at 1.5D as a reference, it is        temporal fluctuations of the volumetric strain are certainly
+very interesting to note that the volume change is negligible     discernible, the overall volumetric strain—is very close to
+for the stages of cutting beyond 1.5D and up to 5D. Fig-          0, due to which a state reminiscent of a critical state (or state
+ure 8b indicates that the volume changes are up to ± 2–3%         of plastic flow).
+at the steady state (indicated for the higher cutting speeds in
+Fig. 8b). Given that ploughing is a large deformation prob-       3.4 Shear band analysis
+lem, and the volume changes of up to 2–3% are negligible,
+indicating a critical state beyond 1.5D. As is apparent from      For the mesoscale kinematics, the features of the shear
+the supplementary material (movie of cumulative volumet-          band visualized in these experiments are also extensively
+ric strain—Online Resource6), the sand response alternates        characterized, and the effect of cutting speed on the strain
+
+
+
+13
+Understanding shear bands in granular media through in-plane ploughing experiments at different strain…                Page 11 of 16 14
+
+Fig. 9 Illustration of variation
+of temporally averaged effective
+strain rate within the shear bands as
+a function of cutting speed. Inset:
+Evolution of strain rate (within
+shear bands) in time for different
+cutting speeds
+
+
+
+
+localisation in sands is examined in the ensuing. An indica-             a given speed of cut, are observed to be anti-synchronized.
+tive (i.e., a spatial average) value of the effective strain rate        This is evident from the two illustrative dashed lines in
+in the “shear band” is extracted from the effective strain rate          Fig. 10 plotted at the same tool displacements (X/D) of 1.2
+contours and plotted for different cutting speeds (Refer to              and 1.75 in both the subfigures, intersecting the plots for the
+the inset of Fig. 9) as a function of cutting distance. The              1000 v case. The first line at X/D = 1.2 intersects the local
+value remains constant over time and further, the values are             maximum in Fig. 10a at P while at the same instance a local
+averaged over time, normalized with respect to the imposed               minima P´ is observed in Fig. 10b. Similarly, the second
+strain rate (vc/D), and plotted as a function of cutting speed           line at X/D = 1.75 intersects the local minima of shear band
+in Fig. 9. A linear relationship is observed between the strain          angle plot at Q and the respective local maximum in shear
+rate and cutting speeds (10–10,000 mm/min).                              band length plot is seen at Q´.
+   The extent and orientation of the shear bands have been                  The extent of strain localisation orthogonal to the shear
+quantified by extracting the length (L), width (W), and                  band direction, that is, “shear band thickness or width” (W),
+inclination angle (θ) from the contour maps of the effective             was also computed from the strain rate contour maps. A
+strain rate. A Standard Hough Transform (SHT) was used to                detailed description of the protocol for estimating the shear
+extract features of the shear bands from the effective strain            band thickness is presented in [47, 57]. Recently, Rattez
+rate contour maps. The SHT uses normal parametrization                   et al. [58] studied the shear banding in uniformly graded
+of a line by the angle (ψ) of its normal and its algebraic               sands under triaxial conditions using a similar method for
+distance (ρ) from the origin. The strain rate field is bina-             the assessment of shear band thickness. A brief description
+rized and every non-zero valued point in a binary image is               of the procedure used by Hegde and Murthy [47] is pre-
+transformed into a unique sinusoidal curve in this paramet-              sented in the following. A rectangular box around the shear
+ric space of ψ- ρ. The SHT detects a straight line with the              band is constructed and rotated to make the band horizontal.
+greatest number of collinear points for each frame of cap-               Horizontal bins along the length of the box are constructed
+ture [56]. The two end coordinates and angle of the fitted               at a spacing of one particle diameter along the box, and
+straight line obtained through SHT are used to estimate the              the mean shear rate value is determined for each of these
+shear band length (L) and inclination angle (θ) for every                bins. The number of bins with a mean value greater than the
+strain rate field captured. Figure 10 shows the evolution of             threshold is counted and reported as the shear band width
+shear band length and inclination angle for different speeds             [47]. The variation of shear band width as a function of tool
+of cut. The shear band inclination (θ) oscillates between                traverse distance (or time) is presented in Fig. 11.
+10° and 35°, while the length of the shear band effectively                 The shear band thickness was found to be fluctuating
+increases following a power law. The amplitude of these                  in the range of 5Dp–25Dp. The time-averaged value of the
+oscillations decreases with the traverse of the sand, predom-            shear band width is ~ 12Dp. Mühlhaus & Vardoulakis [59]
+inantly due to the increased depth of cut with continued cut-            predicted the shear band width values of around 16Dp in
+ting. Also, the local peaks of these two curves—shear band               sands through their bifurcation analysis. It is to be noted here
+angle-displacement and shear band length-displacement for                that even though the boundary conditions for the emergence
+
+
+
+                                                                                                                             13
+14 Page 12 of 16                                                                                                          S. Rathore et al.
+
+Fig. 10 Evolution of geometrical
+features of the shear band as a
+function of cutting distance for
+different speeds of cut: a shear
+band inclination (angle of failure
+zone with x-axis) and b shear band
+length (failure zone length)
+
+
+
+
+                                                                           of shear bands are different compared to the triaxial condi-
+                                                                           tions [58], the features of shear bands in terms of thickness
+                                                                           and inclination remained the same.
+                                                                              Further, it is also apparent that with the increase in
+                                                                           the speed of cut/strain rate, no noticeable impact on the
+                                                                           thickness and overall geometry of these shear bands was
+                                                                           observed. Hegde and Murthy [47] further characterize these
+                                                                           mesoscale structures (shear bands) with changing boundary
+                                                                           conditions, such as depth of cut, and rake angle and show
+                                                                           that the characteristics of the shear bands do not change
+                                                                           with changing boundary conditions during orthogonal cut-
+                                                                           ting. These mesoscale structures are very stable over a large
+                                                                           range of strain and strain rates. Also, the peaks of plots in
+Fig. 11 Evolution of shear band width (thickness of failure zone) as the
+tool displacement progresses during cutting at different speeds
+                                                                           Figs. 10 and 11 correspond to the instances where multiple
+                                                                           shear bands in sands are observed (Refer to Fig. 6).
+
+
+
+13
+Understanding shear bands in granular media through in-plane ploughing experiments at different strain…                 Page 13 of 16 14
+
+
+    While the kinematics of orthogonal cutting of sand has               walls. The periodic force signatures and the emergence of
+provided a good understanding of the deformation charac-                 stable shear bands with periodic transitioning (switching)
+teristics, an important aspect of the formation of the shear             to near shear bands were seen above this critical packing
+band is the influence it has on the overall stress field and the         density. In the present work, this critical packing density is
+nature of the kinetics. The kinetics of the orthogonal cut-              expected to be less than 0.603 ± 0.003 due to the presence of
+ting problem is presented in the ensuing. The examination                the constraining side walls (for the 2-dimensional ploughing
+of cutting and inertial forces during the formation and repo-            conditions). The dry density of 1.5 g/cc corresponds to the
+sitioning of shear bands provides a deeper insight into the              packing density of 0.566.
+influence of strain rate on the response of sands.                           A modified limit equilibrium approach was used to pre-
+                                                                         dict the cutting forces ( F ). The force required for ploughing
+3.5 Cutting and inertial forces                                          (or cutting) depends on the characteristics of the sand, the
+                                                                         geometry of the tool, and tool-sand interface parameters. A
+During cutting, the tool experiences reaction forces on its              limit equilibrium based quasi-static model (with the addi-
+rake face while pushing the sand continuously. Horizontal                tion of inertial force term, F a ) was used for predicting tool
+draft (normal to the rake) and vertical lift (parallel to the            resultant cutting forces [61]. The soil-metal friction angle
+rake and acting downwards) are the major components of                   ( δ ) is assumed to be a function of tool angle(β) as in Eq. (3),
+the tool forces. These force components were measured                    (this relation is empirical—and was developed from the
+using an ATI Nano25 force transducer affixed to the rake                 experimental results on cutting described by Grisso [62]).
+face of the tool, and the resultant cutting force (Fc) was               In this study, since the rake angle ( β ) is 0°, δ is 10°. The
+calculated. Figure 12 shows the variation of cutting forces              internal friction angle of sand ( φ ) was taken as the critical
+on the tool. The cutting force signatures are oscillatory and            state friction angle for sand under plane strain conditions,
+increase with displacement as more of the sand gets cut.                 i.e. 40°. The cutting force was calculated using Eq. (4).
+The sudden drops were observed in the force–displacement
+curves at several instances during cutting. This usually indi-           δ = 50.5 − 0.45 ∗ (90 − β) (3)
+cates the initiation of localization [25]. Hence, the number
+of peaks or drops represents the total number of shear bands                   W sin (θ + φ) + F a cosφ
+                                                                         F =                            (4)
+formed during the cutting process. The alternating cycles                          cos (θ + δ + φ)
+of hardening and softening behaviour of sand also bring
+forth fluctuations in the shear band angle and cutting force.            The weight of the sand ( W ) above the shear band at dif-
+Similar observations are reported by Kashizadeh et al. [41]              ferent stages of cutting, was estimated by computing the
+and Gravish et al. [60]. As expected for a rate insensitive              deformed volume through image analysis. The three differ-
+material like sand, the effect of cutting speed is found to be           ent zones—shear band, sand pile and bulk appearing during
+negligible.                                                              the cutting were demarcated and segmented using a com-
+   Gravish et al. [60] have studied the importance of pack-              bination of adaptive and global thresholding on strain rate
+ing density in the flow behaviour of granular material and               field and velocity field maps [55]. The density in the sand
+respective force signatures under 3-dimensional model                    pile was assumed as equal to the initial density of 1.5 g/cm3.
+ploughing. A critical value of packing density (ratio of                 The assumption that the soil density remains unaffected dur-
+solid volume to the total occupied volume) of 0.603 ± 0.003              ing cutting was considered by Swick and Perumpral [61] in
+was reported in the case of ploughed material without side               developing the dynamic soil-tool interaction model. More-
+                                                                         over, the localization of the deformation with the cyclic dila-
+                                                                         tion (softening)—contraction (hardening) leading to overall
+                                                                         insignificant volume changes, as shown in Fig. 8b, justified
+                                                                         the assumption of constant density to some extent.
+                                                                            In this experimental setup, the cutting velocity ( vc )
+                                                                         was estimated from the PIV image analysis and was in the
+                                                                         horizontal direction and the corresponding velocity of the
+                                                                         sand wedge with respect to the tool ( vs/c ) was vertically
+                                                                         upwards. Hence, the sand net velocity ( vs ), in the refer-
+                                                                         ence frame of the box, was parallel to the failure plane and
+                                                                         directed upwards. The acceleration, due to the increase of
+                                                                         instantaneous pile mass in each time interval, also intro-
+                                                                         duces inertial forces [4]. The force required to accelerate the
+Fig. 12 Variation of cutting forces as a function of traverse distance
+
+
+                                                                                                                              13
+14 Page 14 of 16                                                                                                    S. Rathore et al.
+
+
+successive additional mass of the pile from rest to a velocity     4 Conclusion
+of vs is the inertial force (Fa). The Fa is estimated using
+Eq. (5).                                                           A series of orthogonal cutting experiments at different cut-
+                                                                   ting speeds was performed in this programme to understand
+       γBDvc 2                                                     the effect of strain rate on the mechanics of shear banding
+Fa =           (5)
+        gcosθ                                                      or localization in angular quartz sands. The velocity con-
+                                                                   tour fields obtained from PIV show a clear bifurcation of the
+The experimentally measured forces and the analytically            flow at the tooltip. The effective strain rate fields highlight
+calculated forces were normalized by the weight of the             these regions of velocity jumps as bands of intense strain
+soil (constant, γBD2 )) and plotted for different cutting          rate—i.e., shear bands. The initiation and propagation of
+speeds as shown in Fig. 13. The closeness/overlap of two           these bands are cyclic with the progress of cutting. With the
+curves for each of different speeds showed that the model          increase in the strain rate over 3 orders of magnitude, no
+approximates the forces reasonably well for the wide range         significant changes in the morphology of the shear bands
+of speeds adopted in this paper. Both estimations showed           were recorded. It is interesting to note that these mesoscale
+several sudden drops in forces which were due to the peri-         structures or shear bands are remarkably stable to changes
+odic emergence of new shear bands. In addition, the experi-        in strain rate. The cutting forces on the tool were carefully
+mental measures of tangential and normal force observed            measured in these experiments and did not show strain rate
+during cutting on the tool rake were used to determine the         sensitivity. The experimentally obtained sand-tool interface
+soil-tool interface friction angle. For a given speed of cut,      friction angles were also rate-insensitive and higher than the
+this sand-tool interface friction angle (arctangent of the ratio   previously established empirical estimate. A simple limit
+of tangential to normal force) was found to evolve in time         analysis-based plastic soil-tool interaction model is suffi-
+in a similar manner as that of strain rate. The temporally         cient to predict the tool forces for cutting sands as evidenced
+averaged interface friction angles were found as—21.7°,            in this paper.
+21.9°, 22.7°, 22.4°, 23.2° and 23.9° for cutting speeds of             The study of soil-tool/structure interaction through this
+1, 10, 100, 500, 1000 and 10,000 mm/min respectively.              model cutting problem is vital for understanding the behav-
+It is interesting to note that these values are significantly      iour of geomaterials in processes like trenching, trawling,
+higher (more than twice) than the value (10°) estimated            tillage, etc. The severe plastic deformation in such processes
+using Eq. (3) established by Grisso [62]. The contribution         occurs mostly through localised and intense shearing. The
+of the Fa to F was assessed as a function of inertial number,      implications of understanding shear bands in severe plas-
+I (See Fig. S5 in the Online Resource1). The contribution of       tic deformation of soils are wide-ranging. In such processes
+inertial force to the cutting force remains fixed throughout       of soil-tool interaction causing large deformation, shear
+the cutting process for a given speed. The fraction Fa/F was       banding like bifurcations causes force fluctuations, which
+varying as the square of I. For the largest speed of cut, that     may adversely impact tool wear and the efficacy of the pro-
+is 10,000 mm/min or 1000 v, the Fa contributed around 3%           cess. Furthermore, as the deformation state of the bulk of
+to F, which is negligible.                                         the soil is a replica of the ploughed material, shear band
+                                                                   flow can result in heterogeneous straining and non-uniform
+Fig. 13 Comparison of experimen-
+tal and model estimated cutting
+force for different speeds of cut
+
+
+
+
+13
+Understanding shear bands in granular media through in-plane ploughing experiments at different strain…                                                                  Page 15 of 16 14
+
+                                                                                                                         (eds) Geomechanics: Testing, modeling, and simulation. ASCE
+deformations on the bulk of the sand. Besides its utility in                                                             Geotechnical Special Publication, vol 143, pp 61–70 (2005)
+soil excavation processes, the orthogonal cutting frame-                                                           10.   Yamamuro, J.A., Lade, P.V.: Effects of strain rate on instability of
+work has provided an excellent observational framework                                                                   granular soils. Geotech. Test. J. 16, 304–304 (1993)
+for observations of mesoscale deformations in soils. Finally,                                                      11.   Farr, J.V., Woods, R.D.: A device for evaluating one-dimensional
+                                                                                                                         compressive loading rate effects. Geotech. Test. J. 11(4), 269–275
+it is also interesting to observe the stability of morphologi-                                                           (1988)
+cal characteristics of shear bands to large variations in strain                                                   12.   Song, B., Chen, W., Luk, V.: Impact compressive response of dry
+rates and strains. Though the cutting speeds were varied by 3                                                            sand. Mech. Mater. 41(6), 777–785 (2009)
+orders of magnitude, the cutting forces remained unaffected                                                        13.   Barr, A.D., Clarke, S.D., Petkovski, M., Tyas, A., Rigby, S.E.,
+                                                                                                                         Warren, J., Kerr, S.: Effects of strain rate and moisture content on
+by the respective contribution of inertial forces. Hence, the                                                            the behaviour of sand under one-dimensional compression. Exp.
+kinetics of the cutting problem too, interestingly, remains                                                              Mech. 56, 1625–1639 (2016)
+unaltered for the adopted range of speeds.                                                                         14.   Lv, Y., Liu, J., Xiong, Z.: One-dimensional dynamic compres-
+                                                                                                                         sive behavior of dry calcareous sand at high strain rates. J. Rock
+Supplementary Information The              online                          version               contains                Mech. Geotech. Eng. 11(1), 192–201 (2019)
+supplementary material available at ​h​t​t​​​​p​​s​:​​/​​/​d​​o​i​​.​​o​​r​g​/​​1​0​.​1​0​0​7​/​s​1​0​0​3​5​-​0​   15.   Schimming, B.B., Haas, H.J., Saxe, H.C.: Study of dynamic and
+2​4​-​0​1​4​8​9​-​1​​​​​.​​                                                                                              static failure envelopes. J. Soil Mech. Found. Div. 92(2), 105–124
+                                                                                                                         (1966)
+                                                                                                                   16.   Nakao, T., Fityus, S.: Direct shear testing of a marginal material
+Acknowledgements We thank Koushik Viswanathan for detailed dis-
+                                                                                                                         using a large shear box. Geotech. Test. J. 31(5), 393–403 (2008)
+cussions and help with the experiments. We also thank Saurabh Singh
+                                                                                                                   17.   Whitman, R.V., Healy, K.A.: Shear strength of sands during rapid
+for help in image analysis.
+                                                                                                                         loadings. J. Soil Mech. Found. Div. 88(2), 99–132 (1962)
+                                                                                                                   18.   Seed, H.B., Lundgren, R.: Investigation of the effect of tran-
+Author contribution S.R conducted the experiments, analyzed the                                                          sient loading on the strength and deformation characteristics of
+data and prepared the original manuscript. A.H. helped with the ex-                                                      saturated sands. In: Proc. of ASTM, California, USA, vol 54, pp
+periments and data analysis, and the review of the manuscript. T.G.M                                                     1288–1306 (1954)
+conceptualized, supervised the study, generated resources, and re-                                                 19.   Lee, K.L., Seed, H.B., Dunlop, P.: Effect of Transient Loading on
+viewed the manuscript. This study was funded by SERB, Govt. of In-                                                       the Strength of Sand. In: Proc. 7th Int. Conf. Soil Mech. Found.
+dia through CRG/2022/003750                                                                                              Eng., Mexico City, Mexico, vol 1, pp 239–247 (1969)
+                                                                                                                   20.   Tatsuoka, F., Di Benedetto, H., Enomoto, T., Kawabe, S., Kong-
+Data availability All the images acquired, codes for image analysis,                                                     kitkul, W.: Various viscosity types of geomaterials in shear and
+force data are available with the corresponding author and will be                                                       their mathematical expression. Soils Found. 48(1), 41–60 (2008)
+made available on request.                                                                                         21.   Altuhafi, F.N., Baudet, B.A., Sammonds, P.: On the time-depen-
+                                                                                                                         dent behaviour of glacial sediments: a geotechnical approach.
+                                                                                                                         Quat. Sci. Rev. 28(7–8), 693–707 (2009)
+Declarations                                                                                                       22.   Tatsuoka, F.: Inelastic deformation characteristics of geomaterial.
+                                                                                                                         In: Ling, H.I., Callisto, L., Leshchinsky, D. and Koseki, J. (eds)
+Conflict of interest The authors declare no competing interests.                                                         Soil Stress–Strain Behavior: Measurement, Modeling and Analy-
+                                                                                                                         sis. A Collection of the Papers of the Geotechnical Symposium in
+                                                                                                                         Rome. Springer, Dordrecht, The Netherlands, vol 147, pp 1–108
+References                                                                                                               (2007)
+                                                                                                                   23.   Liingaard, M., Augustesen, A., Lade, P.V.: Characterization of
+                                                                                                                         models for time-dependent behavior of soils. Int. J. Geomech.
+1.     Khan, M.A.: Mechanics of projectile penetration into non-cohe-                                                    4(3), 157–177 (2004)
+       sive soil targets. Int. J. Civ. Eng. 13, 28–39 (2015)                                                       24.   Yin, J.H.: Review of elastic visco-plastic modeling of the time-
+2.     Omidvar, M., Iskander, M., Bless, S.: Response of granular media                                                  dependent stress-strain behavior of soils and its extensions and
+       to rapid penetration. Int. J. Impact Eng 66, 60–82 (2014)                                                         applications. In: Yang, Q., Zhang, J.M., Zheng, H., Yao, Y. (eds.)
+3.     Van Leussen, W., Nieuwenhuis, J.D.: Soil mechanics aspects of                                                     Constitutive Modeling of Geomaterials: Advances and New
+       dredging. Geotechnique 34(3), 359–381 (1984)                                                                      Applications, pp. 149–157. Springer, Berlin, Heidelberg, New
+4.     McKyes, E.: Soil Cutting and Tillage. Elsevier, Amsterdam, The                                                    York, Dordrecht, London (2013)
+       Netherlands (1985)                                                                                          25.   Mukherjee, M., Gupta, A., Prashant, A.: A rate-dependent model
+5.     Huy, N.Q., Van Tol, A.F., Holscher, P.: Laboratory Investigation                                                  for sand to predict constitutive response and instability onset.
+       of the Loading Rate Effects in Sand. Report of Delft University of                                                Acta Geotech. 16, 93–111 (2021)
+       Technology, Delft, The Netherlands (2006)                                                                   26.   Singh, Y., Udupa, A., Chandrasekar, S., Subbarayan, G.: Medium
+6.     Xu, G., Iskander, M., Ads, A., Jing, H.: Visualizing the effect of                                                to high strain-rate characterization of lead free solder alloys
+       excavation rate on rock deformation and fracturing of tunnels                                                     through metal cutting experiments. In: Int. Electronic Packaging
+       using a transparent soft rock surrogate. Acta Geotech. 17(5),                                                     Technical Conference and Exhibition. ASME, California, USA,
+       1949–1969 (2022)                                                                                                  vol 59322, p V001T01A008 (2019)
+7.     Omidvar, M., Iskander, M., Bless, S.: Stress-strain behavior of                                             27.   Jaspers, S.P., Dautzenberg, J.H.: Material behaviour in metal cut-
+       sand at high strain rates. Int. J. Impact Eng 49, 192–213 (2012)                                                  ting: strains, strain rates and temperatures in chip formation. J.
+8.     Suescun-Florez, E., Omidvar, M., Iskander, M., Bless, S.: Review                                                  Mater. Process. Technol. 121(1), 123–135 (2002)
+       of high strain rate testing of granular soils. Geotech. Test. J. 38(4),                                     28.   Kececioglu, D.: Shear-strain rate in metal cutting and its effects
+       511–536 (2015)                                                                                                    on shear-flow stress. Trans. ASME 80(1), 158–167 (1958)
+9.     Yamamuro, J.A., Abrantes, A.E.: Behavior of a medium sand                                                   29.   Tounsi, N., Vincenti, J., Otho, A., Elbestawi, M.A.: From the basic
+       under very high strain rates. In: Yamamuro, J.A. and Koseki, J.                                                   mechanics of orthogonal metal cutting toward the identification
+
+
+
+                                                                                                                                                                                13
+14 Page 16 of 16                                                                                                                       S. Rathore et al.
+
+      of the constitutive equation. Int. J. Mach. Tools Manuf 42(12),         48. Hegde, A.: Mechanics of cutting in granular media. Dissertation,
+      1373–1383 (2002)                                                            Indian Institute of Science Bangalore (2022)
+30.   Fang, N.C., Wu, Q.S.: A new methodology for modeling material           49. Le, L.A., Nguyen, G.D., Bui, H.H., Andrade, J.E.: Localised fail-
+      constitutive behavior using an orthogonal machining test. Trans.            ure of geomaterials: how to extract localisation band behaviour
+      N. Am. Manuf. Res. Inst. Soc. Manuf. Eng. 32, 95–102 (2004)                 from macro test data. Géotechnique 72(7), 596–609 (2022)
+31.   Kareem, K.I., Sve, P.: Effect of Ploughing Depth, Tractor forward       50. Kandasami, R.K.: Experimental studies on the mechanical behav-
+      speed, and plough types on the fuel consumption and tractor per-            iour of cohesive frictional granular materials. Dissertation, Indian
+      formance. Polytechn. J. 9(1), 9 (2019)                                      Institute of Science Bangalore (2017)
+32.   Palmer, A.C.: Speed effects in cutting and ploughing. Geotech-          51. Kandasami, R.K., Murthy, T.G.: Experimental studies on the
+      nique 49(3), 285–294 (1999)                                                 influence of intermediate principal stress and inclination on the
+33.   Al-Suhaibani, S.A., Ghaly, A.E.: Effect of plowing depth of till-           mechanical behaviour of angular sands. Granular Matter 17, 217–
+      age and forward speed on the performance of a medium size                   230 (2015)
+      chisel plow operating in a sandy soil. Am. J. Agric. Biol. Sci. 5(3),   52. White, D.J., Take, W.A., Bolton, M.D.: Soil deformation mea-
+      247–255 (2010)                                                              surement using particle image velocimetry (PIV) and photogram-
+34.   Van Os, A.G., Van Leussen, W.: Basic research on cutting forces             metry. Geotechnique 53(7), 619–631 (2003)
+      in saturated sand. J. Geotech. Eng. 113(12), 1501–1516 (1987)           53. Kobayakawa, M., Miyai, S., Tsuji, T., Tanaka, T.: Local dila-
+35.   Söhne, W.H.: The influence of working speed on the design of                tion and compaction of granular materials induced by plate drag.
+      plow bodies. ASAE, 62–144 (1962)                                            Phys. Rev. E 98(5), 052907 (2018)
+36.   Luth, H.J., Wismer, R.D.: Performance of plane soil cutting             54. Selig, E.T., Nelson, R.D.: Observations of soil cutting with
+      blades in sand. Trans. ASAE 14(2), 255–0259 (1971)                          blades. J. Terramech. 1(3), 32–53 (1964)
+37.   Grinsted, T.W.: Earthmoving in submerged sands. Dissertation,           55. Rathore, S., Hegde, A., & Murthy, T.G.: Transient phase in shear
+      University of Newcastle upon Tyne (1985)                                    zone formation in sands. In E3S Web of Conferences,544, 04006.
+38.   Reece, A.R.: The fundamental equation of earth-moving mechan-               EDP Sciences (2024)
+      ics. In: Proc. Inst. Mech. Engineers. Sage, London, UK, vol 179,        56. Duda, R.O., Hart, P.E.: Use of the hough transformation to detect
+      no 6, pp 16–22 (1964)                                                       lines and curves in pictures. Commun. Assoc. Comput. Mach.
+39.   McKyes, E., Ali, O.S.: The cutting of soil by narrow blades. J.             15(1), 11–15 (1972)
+      Terramech. 14(2), 43–58 (1977)                                          57. Leśniewska, D., Niedostatkiewicz, M., Tejchman, J.: Experimen-
+40.   Hambleton, J.P., Stanier, S.A., White, D.J., Sloan, S.W.: Model-            tal study on shear localisation in granular materials within com-
+      ling ploughing and cutting processes in soils. Aust. Geomech.               bined strain and stress field. Strain 48(5), 430–444 (2012)
+      49(4), 147–156 (2014)                                                   58. Rattez, H., Shi, Y., Sac-Morane, A., Klaeyle, T., Mielniczuk, B.,
+41.   Kashizadeh, E., Hambleton, J.P., Stanier, S.A.: A numerical                 Veveakis, M.: Effect of grain size distribution on the shear band
+      approach for modelling the ploughing process in sands. In: Oka,             thickness evolution in sand. Géotechnique 72(4), 350–363 (2022)
+      F., Murakami, A., Uzuoka, R. and Kimoto, S. (eds) Proc. 14th Int.       59. Mühlhaus, H.B., Vardoulakis, I.: The thickness of shear bands in
+      Conf. Int. Assoc. Computer Methods and Advances in Geome-                   granular materials. Geotechnique 37(3), 271–283 (1987)
+      chanics, Taylor & Francis Books Ltd, Kyoto, Japan, pp 159–164           60. Gravish, N., Umbanhowar, P.B., Goldman, D.I.: Force and flow
+      (2015)                                                                      transition in plowed granular media. Phys. Rev. Lett. 105(12),
+42.   Yong, R.N., Hanna, A.W.: Finite element analysis of plane soil              128301 (2010)
+      cutting. J. Terramech. 14(3), 103–125 (1977)                            61. Swick, W.C., Perumpral, J.V.: A model for predicting soil-tool
+43.   Abo-Elnor, M., Hamilton, R., Boyle, J.T.: Simulation of soil–               interaction. J. Terramech. 25(1), 43–56 (1988)
+      blade interaction for sandy soil using advanced 3D finite element       62. Grisso, R.D.: A soil-tool interaction model for narrow tillage
+      analysis. Soil Tillage Res. 75(1), 61–73 (2004)                             tools. Dissertation, Virginia Polytechnic Institute and State Uni-
+44.   Nouguier, C., Bohatier, C., Moreau, J.J., Radjai, F.: Force fluctua-        versity (1980)
+      tions in a pushed granular material. Granular Matter 2, 171–178
+      (2000)                                                                  Publisher's Note Springer Nature remains neutral with regard to juris-
+45.   Coetzee, C.J.: Discrete and continuum modelling of soil cutting.        dictional claims in published maps and institutional affiliations.
+      Comp. Particle Mech. 1, 409–423 (2014)
+46.   Robinson, S., Brown, M.J., Matsui, H., Brennan, A., Augarde, C.,        Springer Nature or its licensor (e.g. a society or other partner) holds
+      Coombs, W., Cortis, M.: Centrifuge testing to verify scaling of         exclusive rights to this article under a publishing agreement with the
+      offshore pipeline ploughs. Int. J. Phys. Model. Geotechn. 19(6),        author(s) or other rightsholder(s); author self-archiving of the accepted
+      305–317 (2019)                                                          manuscript version of this article is solely governed by the terms of
+47.   Hegde, A., Murthy, T.G.: Experimental studies on deformation            such publishing agreement and applicable law.
+      of granular materials during orthogonal cutting. Granular Matter
+      24(3), 1–22 (2022)
+
+
+
+
+13
+

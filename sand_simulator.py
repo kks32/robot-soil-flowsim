@@ -371,11 +371,13 @@ class SandSimulator:
             if conserve_mass:
                 self._apply_tool_displacement(footprint, (move_i, move_j), target_height)
             else:
+                # Carve to an absolute target height (not cumulative subtraction) for force-limited passes
+                abs_target = max(surface_height - indent_depth, 0.0)
                 for (ci, cj) in footprint:
                     if not self._valid_index(ci, cj):
                         continue
                     self.tool_mask[ci, cj] = True
-                    self.height[ci, cj] = max(self.height[ci, cj] - indent_depth, 0.0)
+                    self.height[ci, cj] = min(self.height[ci, cj], abs_target)
                     carved_rows.add(ci)
             step_counter += 1
             capture(step_counter)

@@ -1,0 +1,1245 @@
+Granular Matter      (2022) 24:70
+https://doi.org/10.1007/s10035-022-01227-5
+
+    ORIGINAL PAPER
+
+
+
+Experimental studies on deformation of granular materials
+during orthogonal cutting
+Abhijit Hegde1 · Tejas G Murthy1
+
+Received: 18 December 2020 / Accepted: 16 March 2022
+© The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2022
+
+
+Abstract
+A study has been made of the deformation field in a plane strain orthogonal cutting of a model granular material. In our
+experiments, images of orthogonal cutting were recorded in situ during the deformation process, and these images were
+analyzed to quantify the velocity and strain rate in the soil ensemble around the tool (or plough). Deformation field param-
+eters such as velocity, strain rate, strain and volumetric strain have been measured using particle image velocimetry. We
+study the evolution of this deformation field from a state of incipient cutting to a steady state of deformation at large strains.
+These measurements have shown among other things, the presence of a small dead zone ahead of the plough, and regions
+of velocity jumps (or intense strain rates or shear bands) which make the deformation fields highly inhomogeneous. The
+characteristics of the deformation field compare favorably with proposed slip line field solutions in the literature. We make
+use of our experimentally measured deformation field parameters to determine the extent of strain localization in the mate-
+rial and the inclination angle of shear bands as they have a direct bearing on the continuum level, constitutive description
+of granular materials.
+
+Keywords Orthogonal cutting · Glass Ballotini · PIV · Shear bands
+
+
+1 Introduction                                                              principles of mathematical theory of plasticity, especially
+                                                                            using slip-line field theory [1–4]. Cutting of soils is chal-
+Ploughing of soil is an earthmoving process generally car-                  lenging due to constraints of multiple phases in the mate-
+ried out using excavators, cutting blades, ploughs, trawl                   rial, discrete nature and concomitant inertial effects in the
+gear etc. It warrants appropriate scientific inquiry since                  soil. Following a framework similar to cutting of metals,
+many engineering operations require movement of several                     Reece [5] and Hettiaratchi and Reece [6], proposed a slip
+tonnes of soils in the mining, infrastructure, and agricul-                 line field-dimensional analysis including the effects of cohe-
+ture sectors. A comprehensive understanding of the prob-                    sion, frictional angle and surcharge of the soil to determine
+lem of ploughing would enable design more efficient tools                   the draft forces experienced by the tool during cutting using
+and optimize many engineering operations. The ploughing                     wide blades. The derived equation for soil resistance was
+process in general can be modeled as an orthogonal cut-                     very similar to the bearing capacity equation derived by
+ting problem wherein a pre-set depth of soil is removed                     Terzaghi [7]. McKyes and Ali [8] Swick and Perumpral [9]
+by moving the tool/blade in a direction normal to the                       extended the model developed by Hettiaratchi and Reece
+embedment of the tool. The problem of orthogonal cut-                       [6] to include narrow blades in 3-dimensions and observed
+ting has been extensively studied in case of metals and a                   that the forces obtained from the theoretical formulation
+robust framework has been well established based on the                     fit well with the measurements from both laboratory and
+                                                                            field tests. However, an important drawback of this model
+* Tejas G Murthy                                                            is the assumptions made on the geometry of the rupture
+  tejas@iisc.ac.in                                                          block or wedge. It should be noted that the shape of the
+     Abhijit Hegde                                                          failure zone depends on the type of blade used (narrow/
+     abhijithegde@iisc.ac.in                                                wide), width to depth ratio of the tool, as well as the type
+                                                                            of soil. Dechao and Yusu [10] have proposed a theoreti-
+1
+     Department of Civil Engineering, Indian Institute of Science,          cal model based on velocity discontinuities instead of soil
+     Bangalore 560 012, India
+
+
+                                                                                                                               13
+                                                                                                                          Vol.:(0123456789)
+ 70     Page 2 of 22                                                                                        A. Hegde, T. G. Murthy
+
+
+failure profile (upper bound solution). Hambleton et al.         due to cutting. In a series of investigations on the variant
+[11] and Kashizadeh et al. [12] have more recently used          of the cutting problem, i.e. motion of intruders in sand,
+an optimization-based model to determine the slip/failure        Li et al. [28] proposed the Resistive force theory (RFT)
+plane observed during cutting which involved minimizing          in order to determine forces on the intruder. Askari and
+the effort needed to move a wedge, defined by the failure        Kamrin [29] using a Drucker–Prager yield criterion showed
+plane, for an infinitesimal displacement of the tool thereby     that the nature and form of the RFT force equations could
+characterizing the deformation in the soil for any earth mov-    be explained by assuming localized plastic yielding occur-
+ing process. Van Os and Van Leussen [13], Miedema [14],          ring in the granular media, around the body of the intruder.
+Palmer [15] have all performed extensive cutting experi-             While all this work has provided great insight into the
+ments on submerged sand and studied the effect of pore           loads and forces on the plough or tool, very little is known
+water pressure on the draft forces observed during cutting.      in terms of the corresponding kinematics and deformation of
+All the authors observed the crucial role played by dila-        the granular materials during cutting. We present the results
+tancy in determining the cutting forces under submerged          of an extensive experimental study for understanding both
+conditions. The cutting force was found to increase linearly,    qualitatively and quantitatively, the deformation field of
+for the speeds measured in the range of 1–5 m/s, up until        granular materials when subjected to ploughing over a range
+cavitation occurred. Both Van Os and Van Leussen [13] and        of parameters. We investigate the failure mechanism that is
+Palmer [15] accounted for a change in the cutting forces due     formed during cutting as a function of imposed strain rate.
+to changing pore pressure by determining the pore pressure       We study this problem through extensive imaging and con-
+distribution based on a similarity transformation on the dif-    comitant image analysis on cutting of glass beads confined
+fusion equation and solving it with appropriate boundary         in a plane strain set-up.
+conditions while Miedema [14]used the Biot’s equation for            Though the stress levels in our scaled down, model
+the same. Yong and Hanna [16], Kushwaha and Shen [17],           experiments are orders of magnitude lower than that expe-
+Szymanski et al. [18] have all used finite element analysis to   rienced by machines operating under in situ conditions,
+model the cutting process and predict the forces on the tool     based on the experimental results obtained from centrifuge
+using constitutive models of various degrees of complexity.      tests conducted at higher ’g’ values by Robinson et al. [30],
+Yong and Hanna [16] have used displacement boundary              we conclude that the results presented in this paper are still
+conditions in their FE model of soil cutting and compared        relevant for applications involving ploughing under field
+it with experimental results on clay cutting. Kushwaha and       conditions. Most importantly, in addition to clearly dis-
+Shen [17] made use of a constitutive model developed by          cerning the mechanics of cutting in granular materials, the
+Duncan and Chang [19] to perform a dynamic FE analy-             velocity fields obtained from our analysis should also be
+sis of soil cutting by considering very high cutting speeds,     extremely useful in verifying the correspondence between
+up to 15 m/s. An updated Lagrangian method was used to           the stresses in the material and assumed plastic flow rules
+determine the grid geometry for each increment. Szymanski        for modeling their behavior using lower and upper bound
+et al. [18] made use of a commercially available FEM soft-       limit analysis.
+ware ABAQUS and implemented a hypoplastic constitutive
+model, similar to the one used by Abo-Elnor et al. [20], to
+study the draft forces and deformation field during cutting      2 Experiment
+of soil for a range of soil parameters including soil internal
+friction angle and cohesion. Nouguier et al. [21], Asaf et al.   2.1 Setup and procedure
+[22], Ding et al. [23], Obermayr et al. [24], Mak and Chen
+[25] and Coetzee [26] have used Discrete Element Method          Plane-strain (2D) cutting was used as an experimental frame-
+(DEM) or its variants to simulate cutting in granular materi-    work to study the evolution of deformation over a range of
+als. These DEM simulations either use continuum/theoreti-        strains and deformation rates on a model granular material.
+cal predictions or model experiments to benchmark their          Additionally, we also analyzed shear band formation and
+simulations. Coetzee [26] used a combination of meshless         propagation using imaging and image analysis. We use a
+Material Point Method and DEM to study the problem of            CNC machine (manufactured by Ace Micromatic Pvt. Ltd),
+soil cutting, especially making critical observations on the     for performing our cutting experiments, and concurrently
+slip planes. Gravish et al. [27] observed that the behavior      capture the images for analysis with a PCO 1200HS camera.
+of draft forces acting on the cutting tool is dependent on the   A rectangular box of dimensions 55.5 cm × 16 cm × 1.5 cm,
+initial packing fraction(ratio of volume occupied by solids      made of High-speed (HS) steel was used for these cutting
+to total volume) of granular materials. A bifurcation in flow    experiments. High-speed (HS) steel has been observed to
+and forces was observed at a critical packing fraction, 𝜙c ,     have a higher hardness in comparison to high carbon steel
+indicating a “phase transition” occurring in the material        and is also more resistant to abrasions, hence making it more
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                   Page 3 of 22   70
+
+durable. Our entire experimental set-up has been presented                   relief angles can definitely be employed but lower relief
+in Fig. 1a. The cutting box is first mounted onto the transla-               angle leads to significant shearing at the bottom face of the
+tion stage of the CNC machine. A cutting tool made from                      tool. The CNC machine is designed such that it allows the
+HS steel, with the exact same width (1.5 cm) as the cutting                  tool to only move in the vertical direction(Z-axis in machine
+box, was then aligned and lowered into the box. We have                      coordinates), while the translation stage, on which the box is
+tried to keep the tool as sharp as possible. The angle between               placed, is allowed to move along any direction in the hori-
+the bottom face of the tool and the material surface, also                   zontal plane. A glass plate was then carefully fastened to
+called the ’relief angle’, is 200 and its main purpose is to                 front face of the box thereby ensuring plane strain conditions
+ensure that flow separates completely at the tool tip. Higher                in our experiment. Glass beads were then carefully funneled
+
+
+Fig. 1  a Orthogonal cutting
+setup on the CNC machine. b
+Schematic showing the different
+parameters of orthogonal cut-
+ting geometry. c Sample image
+captured during the cutting
+process for a 00 rake angle tool.
+d Image obtained by superposi-
+tion of 100 consecutive frames
+captured during the cutting
+process
+
+
+
+
+                                                                                                                                 13
+ 70     Page 4 of 22                                                                                               A. Hegde, T. G. Murthy
+
+into the box through the top until the desired depth of cut        The reflection from the individual glass beads when they
+was reached and leveled off to obtain a uniform height. Lev-       are lit, serves as an effective speckle pattern for our current
+eling is slightly harder for angled rakes. The packing was in      PIV analysis.
+an undisturbed state before the commencement of cutting,              The PIV code used in this research work has been written
+which is done by moving the box at a desired velocity (we          in MATLAB [34] and has been used previously in other pub-
+were able to drive the cutting box at speeds ranging from          lished works, most notably [35, 36]. In-order to assess the
+0.5 mm/min to 104 mm/min in the CNC) with the tool held            quality of images used in our analysis and also to calibrate
+fixed. The tool was ’not’ pushed into the packing vertically       our code, an initial exercise was carried out wherein the
+(indentation) into the ensemble. The total traverse distance       cutting box with glass beads was moved at a constant veloc-
+of the box was set to 10 cm in all of our experiments. The         ity without the tool (i.e. packing was not subjected to any
+camera was set up to capture the field around the tool tip,        deformation) and images corresponding to this rigid body
+with appropriate illumination. A frame rate was modulated          motion were captured. This rigid body motion is referred to
+based on the cutting speed employed. The images have been          as ’dryrun’ in our paper.
+captured at a spatial resolution of 0.167 mm/pixel. A sche-           Accuracy of the measured displacements using PIV
+matic of the setup, as seen from the camera, with different        depends critically on the texture quality of the images [37]
+parameters of the cutting geometry, is presented in Fig. 1b.       and therefore it is necessary to come up with measures to
+A sample image for 00 rake captured during the experiment          assess the quality of images before performing PIV. Pan
+is shown in Fig. 1c, d, we have presented an image obtained        et al. [38] have proposed global and local measures based
+by overlapping 100 consecutive frames captured during the          on pixel intensities to determine the suitability of the cap-
+test. The streaks observed in this image are analogous to          tured images for performing PIV (or Digital Image correla-
+streamlines in fluid flows.                                        tion). These parameters such as the Mean Intensity Gradient
+                                                                   (MIG), ’Sum of Squares of Subset pixel Intensity Gradients
+2.2 Model material                                                (SSSIG)’ and ’Standard deviation of the subset pixel intensi-
+                                                                   ties (𝜎ls)’ have all been assessed as outlined by Pan et al. [38]
+Spherical Glass Ballotini (manufactured by Hindustan               and Stainer et al. [37] and satisfy all the suggested limits in
+Glass Beads Ltd, India) were used as model material in our         our experiments.
+orthogonal cutting experiments. Using glass ballotini for             We perform our PIV analysis with a non-overlapping win-
+our experiments will make it easier to later compare our           dow size of [60 pixel, 60 pixel] with a grid size of 15 pixel
+results with typical DEM results, and to analyze the problem       (∼ particle size). The spacing between windows is equal to
+at multiple length scales. Complete physical and chemical          the interrogation window size and Pixels per Particle is ∼
+characterization of the glass beads used in our study is pre-      15 [37].
+sented in [31]. The mean grain size of the glass beads ( dp)          In Fig. 2a we have shown the velocity field obtained for
+is 2.5 mm, roundedness is 0.96 and the specific gravity is         the ’Dryrun’ case using our PIV code. The box was moved
+2.5. The critical state friction angle is 300 under plane strain   at a constant speed of 9mm/min which translates to 1.9 px/
+conditions. The bulk density varied between 1.5 and 1.6 g/cc       frame. In Fig. 2b we have shown the histogram of meas-
+across different trials. Also while the model granular mate-       ured velocities over 100 frames. The distribution is ’Nor-
+rial used in our cutting experiments is monodisperse, a small      mal’ and shows a peak at around 1.89 px/frame. The Root
+dispersion in the bead size does exist which can be verified       Mean Squared Error (RMSE), of the measured velocities
+from the CT analysis on a packing of the beads used in our         was 0.043 mm/s and was computed using
+experiments and no crystallization was observed in these                       �∑
+packings when we investigated the radial distribution func-                         i,j∈NG (Ai,j − Aapplied )
+                                                                                                             2
+                                                                   RMSE =                                                        (1)
+tion as well as Q6 parameters.                                                                NG
+
+2.3 PIV                                                           where A is the measured field values of velocities, effective
+                                                                   shear strain rate,𝜖̇ eff and volumetric strain rate 𝜖̇ vol at the grid
+A Particle Image Velocimetry (PIV) algorithm was used to           points (i,j), Aapplied is the imposed value and NG is the total
+analyze the images captured through the cutting process.           number of grid points.
+PIV is an indirect, non-intrusive, whole field velocity meas-         Also most importantly we see no bias in the measured
+urement technique used extensively in the study of fluid           velocities towards any integer values, which has been
+flows and also soil deformation [32, 33]. This technique           regarded as the primary source of vermiculate features
+involves determining the displacement of markers, placed           observed in certain PIV results [37].
+within the flowing material, by capturing images of the flow          In Fig. 2c we have plotted the effective shear strain rate
+at a frame rate specified by the time scale of the problem.        [39] computed from the measured velocity field using
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                                                             Page 5 of 22      70
+
+
+
+
+                                                                                              4000
+
+
+
+
+                                                                                  Frequency
+                                                                                              2000
+
+
+
+
+                                                                                                  0
+                                                                                                      1.84        1.86         1.88          1.9       1.92           1.94
+
+                                                                                                                    Measured velocities (pixels/frame)
+
+                                     (a)                                                                                               (b)
+                                                                                              6000
+
+
+
+
+                                                                                              4000
+                                                                                 Frequency
+
+
+
+
+                                                                                              2000
+
+
+
+
+                                                                                                  0
+                                                                                                      0       1           2        3         4     5              6        7
+
+                                                                                                                                                                             10-4
+                                     (c)                                                                                               (d)
+
+
+                                                                                          4000
+                                                                           Frequency
+
+
+
+
+                                                                                          2000
+
+
+
+
+                                                                                              0
+                                                                                                      -8     -6      -4       -2       0     2     4          6       8
+
+                                                                                                                                                                          10-4
+                                     (e)                                                                                           (f)
+
+Fig. 2  PIV calibration exercise. a Measured velocity using PIV for               frames. e Measured volumetric strain rate. f Histogram of measured
+the dry run case. b Histogram of measured velocities. c Effective                 volumetric strain rates
+strain rate for dry run. d Histogram of computed shear rates over 100
+
+
+
+
+                                                                                                                                                                               13
+ 70       Page 6 of 22                                                                                                        A. Hegde, T. G. Murthy
+
+                                                                             Table 1  Tests carried out in the exercise
+         √ {
+          4 1                                               3 2
+                                                                   }
+𝜖̇ eff =      [(𝜖̇ xx − 𝜖̇ yy )2 + (𝜖̇ xx )2 + (𝜖̇ yy )2 ] + 𝛾̇ xy     (2)
+          9 2                                               4                Test     Rake Angle 𝛼 Depth of          Cutting Speed   Imposed
+                                                                                      (degrees)    cut D mm          Vc mm/min       Strain Rate
+𝜖̇ xx = 𝛿u 𝛿x
+              being the normal component of strain rate tensor in                                                                    (Vc ∕D)
+the direction of tool traverse.
+                                                                             T1-a     0               15             10              10−2
+              𝛿v
+     𝜖̇ yy = 𝛿y  being the normal component of strain rate tensor
+                                                                             T1-b     − 20            15             10              10−2
+in the direction perpendicular to tool traverse.                             T1-c     + 20            15             10              10−2
+   𝛾̇ xy = [ 𝛿u   𝛿v
+                + 𝛿x ] being the shear component of strain rate.             T1-d     − 40            15             10
+             𝛿y                                                                                                                      10−2
+   We have plotted the histogram of the measured effective                   T1-e     + 40            15             10              10−2
+shear strain rates over 100 frames in Fig. 2d and it shows                   T2-a     0               15             0.5             5 × 10−4
+a skewed normal distribution. The RMSE in this case was                      T2-b     0               15             1               10−3
+1.7 ×10−4 , computed with the imposed 𝜖̇ eff as zero, which                  T2-c     0               15             100             10−1
+is almost 2 orders of magnitude smaller than the maximum
+                                                                             T2-d     0               15             1000            1
+measured strain rate within the shear bands of our cutting                   T2-e     0               15             10,000          10
+experiments for similar speeds.
+                                                                             T3-a     0               50             10              3 × 10−3
+   In Fig. 2e we have plotted the volumetric strain rate field
+and the corresponding histogram in Fig. 2f. Like in the case
+of velocities, the distribution is ’Normal’. RMSE was again
+                                                                             also very evident in the image shown in Fig. 1d. The dead
+computed by setting the imposed 𝜖vol ̇ = 0 and was 1.8 ×10−4.
+                                                                             zone effectively increases the rake angle of the tool. While
+This noise is an order of magnitude lower than the peak
+                                                                             the pile formed ahead of the tool as the cutting progresses
+values measured in the shear band regions.
+                                                                             is similar to the formation of chips in metal cutting, it is
+   Further details regarding PIV, including acquisition of
+                                                                             also interesting to note that the magnitude of the velocity
+images, calibration and efficiency of the different algorithms
+                                                                             is significantly reduced (by 50–60%) when compared to
+are found in [40, 41].
+                                                                             the imposed cutting velocity. As cutting progresses the
+                                                                             glass beads piled up in-front of tool begin to repose under
+                                                                             gravity. The surface angle of this pile reaches a steady
+3 Results                                                                   value of about 300 with respect to the horizontal axis. This
+                                                                             angle has been observed to be independent of the rake
+We present the results of a series of orthogonal cutting                     angle of the tool (shown in Fig. 4b). The overall pattern
+experiments on model glass ballotini for different tool rake                 in the velocity field is not altered with the progress of cut-
+angles, and also different cutting speeds in this research                   ting, in other words indicating an overall steady state of
+program for investigating the effects of imposed strain and                  deformation during cutting. The velocity field characteris-
+strain rates, on the evolution of deformation fields during                  tics also remain by and large unchanged. A central region
+cutting. Different geometric parameters employed for the                     of medium velocity (0.5×Vc , ,Vc being the speed of cut)
+current research work has been provided in Table 1. The                      is surrounded by regions of lower velocity (0.2×Vc ) due
+images captured were analyzed using PIV. Cutting speed                       to formation of a dead zone, while the free surface shows
+was maintained at a constant speed of 10 mm/min for all                      a region of opposing velocities, indicating the material
+the experiments investigating the effect of tool rake angles                 reposing. At the outset, the particles undergo a significant
+and depth of cut.                                                            change in the direction as they approach the tool. Fol-
+   Velocity and strain rate                                                  lowing which, the particles rise along the tool face and
+   Figure 3 presents the instantaneous velocity field for a                  form a pile in- front of tool with significant retardation in
+00 (Test T1-a) tool with the progress of cutting. In-order                   the magnitude of the velocity of the particles. Lastly even
+to visualize the flow, a quiver plot is superimposed on the                  though the overall size of the chip/pile and the total depth
+velocity contour map showing the magnitude of velocity.                      of cut increase with progress of cutting, the free surface
+We observe that the glass beads experience a sharp change                    angle of the pile and the overall velocity field both indicate
+in their direction of motion as they approach the tool. As                   a steady deformation pattern.
+cutting progresses, the glass beads rise vertically along the                   Figure 4a presents the evolution of the free surface of the
+tool rake face and begin to form a pile in front of the tool.                pile formed in front of the tool as it cuts through the glass
+Within the pile, the glass beads close to the tool rake face                 beads, for 00 rake. We observe that the free surface profiles
+stick to the tool (i.e. a region of negligible or zero veloc-                of the pile at different time instants are self-similar and run
+ity) resulting in the formation of a dead zone whose thick-                  parallel to one another. Figure 4b shows evolution of the
+ness typically varies from one to two particle diameters,                    repose angle with tool displacement as determined from the
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                     Page 7 of 22   70
+
+Fig. 3  Velocity field evolu-
+tion with continued cutting of
+the granular ensemble (tool
+displacement of a D, b 2D, c
+4D, and d 6D). A quiver plot
+is overlapped on this image
+indicating the direction of flow
+of the glass beads. It should
+be noted here, that the overall
+pattern of the velocity field is
+not altered with the progress of
+cutting, indicating an overall
+steady state of deformation dur-
+ing cutting
+
+
+
+
+free surface slope of the piles, similar to the ones shown in                The overall characteristics of the velocity field remain
+Fig. 4a.                                                                     unchanged with changing rake angle, in that, similar pat-
+   In Fig. 4b, the evolution of repose angle for different rake              terns in the velocity/deformation field are observed in all
+angles has been presented. We obtain the slope of the pile by                the cases except the size of the chip, which varies with the
+extracting the boundary which has been shown in Fig. 4a.                     rake angle. As has been said, the surface angle of the chip
+The slope is computed by noting down the pixel location                      (or the dynamic repose angle) is the same for all rake angles
+of the topmost particle and the initial free surface from the                and is 300 (Fig. 4b).
+raw images by using edge detection algorithms such as the                        The effective strain field is calculated from the instanta-
+Prewitt operator. This allows us to determine both the height                neous velocities of the ensemble (Eq. 2). 𝜖̇ eff field contour
+and horizontal extent (base) of the pile for every time frame,               maps for the case of 00 tool are presented in Fig. 6. The field
+and their ratio further gives us the repose angle.                           shows a concentrated region of very high intensity emerging
+   In Fig. 4c, we have plotted the measured maximum effec-                   from the tool tip and propagating towards the free surface,
+tive strain rate, 𝜖̇ eff , for different cutting speeds while the            indicating a region of shear localization, which separates
+inset of Fig. 4c shows the evolution of 𝜖̇ eff with time. It is              the chip from the rest of the ensemble. The normalized 𝜖̇ eff
+apparent from Fig. 4 that the system reaches a steady state                  is high at the tool tip, and any jumps in the velocity is clearly
+of deformation during orthogonal cutting and the measured                    presented as a region of intense strain rate. With the build-
+strain rate within the material is directly proportional to the              up of the chip, i.e., with traverse of the tool, the region of
+applied cutting speed. Therefore, we have chosen to scale                    intense strain rate emanating from the tool tip moves towards
+both effective strain rate and volumetric strain rate by Dc                  the surface, and at sufficiently large deformations, the aver-
+                                                                V
+
+which has been referred to as the imposed strain rate in this                age effective strain rate in the ensemble reaches a steady
+paper.                                                                       value (inset of Fig. 4c) and there is a clear region of high
+   The velocity field as a function of the rake angle at                     strain rate through which the granular material gets cut.
+approximately the same time elapse is presented in Fig. 5.                   Regions showing repose of the particles at the free surface
+
+
+                                                                                                                                   13
+ 70       Page 8 of 22                                                                                                                                                                         A. Hegde, T. G. Murthy
+
+Fig. 4  a Evolution of free                     0                                                                                                                  70
+                                                                                                                                                                                                    0         0     0       0     0
+surface profile for 00 rake. b                                                                                           1 D                                                                        0       -20   +20   -40     +40
+                                                                                                                         2 D                                       60
+Evolution of repose angle deter-
+
+
+
+
+                                                                                                                                         , Repose Angle(degrees)
+                                                                                                                         4 D
+
+mined from the free surface pro-                                                                                         6 D
+                                                                                                                                                                   50
+file. Inset shows the evolution
+for different rake angles. The                  27                                                                                                                 40
+
+
+
+
+                                        Y/d p
+dynamic repose angle is the                                                                                                                                        30
+same for all rakes used in this
+work. c 𝜖̇ eff as a function of cut-                                                                                                                               20
+ting speed. 𝜖̇ eff increases linearly
+                                                53                                                                                                                 10
+with speed
+                                                     0             13   27              40           53            67                                                  0
+                                                                                                                                                                           0      1       2             3               4             5
+                                                                                       X/d p                                                                                   Normalized tool displacement(u/D)
+                                                                                   (a)                                                                                                        (b)
+
+
+                                                                                               0.5   1       10         100       1000        10000
+                                                         10 2
+                                                                                   2
+                                                                             10
+                                                                                   1
+                                                                             10
+                                                                             10 -0
+                                                              1
+                                                         10                  10
+                                                                                  -1
+
+                                                                             10 -2
+
+                                                         10 -0
+                                                                                  -3
+                                                                             10
+                                                                                       0                 2                    4                                    6
+                                                                                                                  u/D
+
+                                                         10 -1
+
+                                                              -2
+                                                         10
+
+                                                         10 -3
+                                                                                  0.5 1                             10                              100                           1000         10000
+                                                                                                                    Cutting speed(mm/min)
+                                                                                                                                                (c)
+
+
+also show an increased strain rate (typically it is of the same                                volumetric strain rate in the ensemble is typically seen to
+magnitude or slightly lower than the intensity observed in                                     occur in the vicinity of the tool tip and also in few cases,
+the shear bands originating at the tool tip). These regions                                    near the free surface of the pile reposing under gravity. We
+of shear localization are planes along which the material                                      observe alternating bands of dilation(blue in the Color map)
+fails which is very similar to what is observed in metal                                       and compaction (yellow-orange in the Color map), running
+cutting(hence the terms chip and pile are used interchange-                                    parallel within the pile, as the tool pushes through the granu-
+ably in this paper). These failure planes take both straight                                   lar bed, and reminds us of Sokolovskii’s characteristics [44].
+and curved profiles during the course of cutting, which is                                     This pattern of alternating dilation and compaction has only
+evident from Fig. 6, and the angle of this failure plane with                                  been reported before in [45, 46].
+respect to the x-axis,(Fig. 1b), also varies with the progress                                    The effective strain rate as a function of rake angle at the
+of cutting. In some frames, especially during the later stages                                 same stage of cutting is presented in Fig. 8. In all the cases
+of the experiment (after about 200 frames/(4D)), follow-                                       we observe formation of distinct shear bands originating at
+ing localization, the strain rate was also observed to diffuse                                 the tool tip and separating the chip from the rest of the mate-
+across the accumulated pile. This is most likely due to a                                      rial. The effective shear strain rate was found to be insensi-
+decrease in the local volume fraction of the pile due to dila-                                 tive to the rake angle of the tool and the maximum value in
+tion (shown in Fig. 7) and it is well known from kinetic                                       each case was around 2–2.5 times the imposed strain rate
+theory of granular materials that the system becomes more                                      (refer to Table 1). For the case of positive rakes, significant
+diffusive as the overall packing fraction decreases [42, 43].                                  shearing was also observed at the bottom face of the tool.
+   The contour maps corresponding to the time evolution of                                        In Fig. 9, we show the volumetric strain rate as a function
+volumetric strain rate within the ensemble (for the case of                                    of rake angle, at the same stage of cutting (6 × D). Irrespec-
+test T1-a) are shown in Fig. 7. In these maps, the negative                                    tive of the rake angle employed in our tests, we observe that
+values of volumetric strain rate correspond to dilation con-                                   the maximum dilation occurs near the tool tip. As in the case
+sidering the fact that the particles rising along the tool tip                                 of 00 rake, we observe alternating regions of dilation and
+move in the direction of negative y-axis (Fig. 1b). Maximum                                    compaction within the pile. The magnitude of volumetric
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                        Page 9 of 22    70
+
+
+
+
+Fig. 5  4 instantaneous velocity fields at approximately the same time elapse/tool displacement are presented in this figure corresponding to cases
+a −200, b −400, c +200 and d +400
+
+
+strain rate is again observed to be independent of the rake                  PIV provides instantaneous velocity field over a fixed grid.
+angle and the maximum value in each case was observed to                     Hence, in-order to obtain new set of grid positions, starting
+be around 1–1.5 times the imposed strain rate.                               from the first frame, we first add the measured instantane-
+   In Fig. 10 we present the cumulative effective strains for                ous displacements to the grid points of the current frame.
+different rake angles after a tool displacement of 2 × D–D                   In the next step we interpolate the instantaneous displace-
+being the initial depth of cut, computed by integrating the                  ments obtained using PIV over this new deformed grid. The
+effective strain rate along a certain path of traverse using                 interpolated displacements are again added to the current
+                              F
+                                                                             set of grid points as we move to next frame. This procedure
+                                                                             is carried out till the last time frame thereby allowing us to
+         ∫
+                              ∑
+𝜖eff =       𝜖̇ eff (t)dt =          k
+                                  𝜖̇ eff (i)𝛥t                       (3)
+                              i                                              track the grid points in time and hence obtain their path of
+                                                                             traverse. Thus by adding the interpolated strain rates meas-
+where ’ F ’ is the number of frames over which the cumula-                   ured at each location along it path of traverse, one can easily
+tive strain is being computed, i is the frame/image number,                  compute the cumulative strains.
+   k
+𝜖̇ eff (i) is the effective strain rate for grid point ’k’ in frame i            We observe severe accumulation of strain at the tool tip and
+and 𝛥t is the time interval between two successive frames.                   its magnitude decreases as we move away from the tool. The
+       Cumulative strains reported in this paper are Lagran-                 overall deformation is extremely localized and does not extend
+gian measures, computed over a moving/deforming grid.                        beyond a few particle layers (5–6 × dp) below the tool tip. The
+
+
+                                                                                                                                      13
+ 70      Page 10 of 22                                                                                                         A. Hegde, T. G. Murthy
+
+
+
+
+Fig. 6  The evolution of effective strain rate as a function of traverse of the tool at a D, b 2D, c 4D, and d 6D. Regions showing repose of the par-
+ticles, at the free surface also shows an increased strain rate
+
+
+deformed region is much higher for negative rake angles in                   has a bearing on providing optimal engineering solutions for
+comparison to positive rake angles. A value as high as 2.5 for               a host of processes including ploughing, trawling, trenching
+𝜖eff (as seen in Fig. 10) is a clear indication that the material            and other questions including locomotion of organisms in
+has been subjected to very large deformation and the system                  sand, movement of wheels on soils. This experimental study
+has approached the critical state where one expects the granu-               has enabled among other things, quantitative characteriza-
+lar material to be capable of deforming indefinitely in shear,               tion of the deformation fields in cutting, including velocity
+without significant volumetric changes, at the continuum length              fields, regions of intense strain rates, or what we will refer to
+scale [47].                                                                  as shear bands henceforth and the overall strain the material
+                                                                             undergoes when subjected to large strain deformations. Our
+                                                                             experiments provide insights into localized plastic deforma-
+4 Discussion                                                                tion in the bulk of the granular material, following shear
+                                                                             band nucleation. We also establish features of this local-
+Knowledge of the evolving deformation field during cutting                   ized flow as a function of both imposed strain (deformation
+is perhaps the first step in generating an admissible velocity               geometry) and the strain rate (velocity or speed of cutting).
+field necessary for a simple upper bound solution of plastic                 Investigations on ploughing or cutting hitherto have exclu-
+flow. A comprehensive understanding of the cutting process                   sively focused on estimating the forces on the tool or the
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                        Page 11 of 22    70
+
+
+
+
+Fig. 7  The evolution of volumetric strain rate as a function of tool traverse for 00 tool. Negative values in the Color map correspond to dilation.
+The volumetric strain rate is maximum near the tool tip. We also observe alternating bands of compaction and dilation
+
+
+rake, using limit analysis-based investigations. While these                 of deformation, before being pushed upwards to form the
+upper bound estimates heavily rely on the accuracy of the                    pile, indicating dilation of material, which has been shown
+deformation field, investigations on accurately estimating                   in Figs. 7 and 9. To add to our study on deformation char-
+these deformation and velocity field have been few and far                   acteristics during cutting, we have also tried to look at both
+between.                                                                     the formation and subsequent evolution of shear bands in
+                                                                             our system, which is in a constant state of yield. We see this
+4.1 Shear band characterization                                             as a very important aspect of orthogonal cutting geometry,
+                                                                             in that it allows the researcher to create and sustain shear
+Accumulation of intense plastic strains over very small                      bands over extended periods of time due to the possibility
+regions during shear band evolution is found to occur by                     of imposing extremely large deformations on the granular
+relative sliding between adjacent material segments in a nar-                material, which is not possible in the case of more classi-
+row spatial region typically of the order of few particle diam-              cal approaches for studying soil behavior like the triaxial or
+eters. The sliding occurs along planes which are orientated                  biaxial testing apparatus. We conjecture that such a study of
+at an angle to the direction of cutting, which was observed                  the dynamics of shear bands in granular materials provide
+to change during the course of cutting. The particles are                    a very crucial length scale for connecting the macroscopic
+also seen to roll over one another, in these localized regions               observations at the continuum level to microscopic events at
+
+
+                                                                                                                                       13
+ 70      Page 12 of 22                                                                                                         A. Hegde, T. G. Murthy
+
+
+
+
+Fig. 8  Effective strain rate for different rake angles. The regions of intense strain rates change with changing rake angle. A region of high strain
+rate exists at the tool tip, traversing toward the free surface. a −200, b −400, c +200 and d +400
+
+
+the particulate level providing a multiple length scale under-              region (Figs. 3, 4, 5, 6, 7, 8, 9), enables us to separate out
+standing of the physics and mechanics of localization during                and study the properties of shear bands using image process-
+granular flow.                                                              ing. The procedure that has been employed by the authors to
+   Using the PIV results we further study the range of orien-               determine the inclination angle of the shear band has been
+tations and thickness assumed by shear bands under steady                   explained in Appendix 1.
+shear deformation applied by pushing a tool through a bed                      The inclination angle of shear bands has often been a point
+of glass beads.                                                             of conflict in soil mechanics literature [49–53]. From condi-
+   Determination of inclination angle                                       tions of static equilibrium and Mohr-Coulomb criterion, it can
+   We have employed the technique of Standard Hough                         be easily shown that the shear band inclination angle, with
+Transformation(SHT) to determine the orientation of shear                   respect to the direction of major principal stress, is given by
+bands. Hough transformation has been employed to identify                         (          )
+lines in images [48] and was later extended to include other                         𝜋 𝜙
+                                                                            𝜃C =        −                                                 (4)
+arbitrary shapes such as circles and ellipses. In our case, the                      4 2
+observation that both velocity and strain rate contour fields
+show sharp changes in magnitude around the shear band
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                       Page 13 of 22   70
+
+
+
+
+Fig. 9  Volumetric strain rate for different rake angles, corresponding to a traverse distance of 6D: a −200, b −400, c +200, and d +400
+
+
+
+where 𝜙 is the mobilized friction angle. Essentially the shear               Sture [53] in their plane-strain experiments. Also, only under
+band is aligned in the direction of maximum stress obliquity                 the case of associative flow (𝜓 = 𝜙) one can can expect 𝜃C
+(ratio of shear stress to normal stress is maximum in this                   and 𝜃R coincide with each other.
+direction) and these shear bands have often been called as                      Arthur et al. [51], based on the experimental data obtained
+Coulomb rupture surfaces.                                                    using shear and plane strain apparatus, further observed that
+   Roscoe [49], based on extensive experimental results on                   these ruptures planes can also align themselves along the
+the plane-strain retaining wall apparatus, came to the conclu-               direction given by
+sion that the shear bands align along the zero-extension lines
+                                                                                    𝜃R + 𝜃C
+and hence were inclined at an angle of                                       𝜃A =                                                            (6)
+                                                                                       2
+         𝜋 𝜓
+𝜃R = (     − )                                                       (5)     with respect to the direction of major principal stress, which
+         4  2
+                                                                             was further verified by Vardoulakis [54] based on the results
+with respect to the direction of maximum principal strain                    of biaxial tests on dry sand samples. Vermeer [52] using a
+rate, with 𝜓 being the dilation angle of the soil specimen at                numerical model showed that all angles between 𝜃R and 𝜃C
+failure. This was also observed to be the case by Ashibli and
+
+
+                                                                                                                                       13
+ 70      Page 14 of 22                                                                                                      A. Hegde, T. G. Murthy
+
+
+
+
+Fig. 10  The figure presents the cumulative strain during orthogonal cutting through a certain length of traverse(2 × D) as a function of the rake
+angle. a −200, b −400, c +200, d +400 and e 00
+
+
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                                       Page 15 of 22   70
+
+were possible and theorized that the orientation of shear                                      direction of the major principal strain rate(𝜓 being the angle
+bands also depended on particle size which was later dis-                                      of dilation). The maximum angle of dilation within the shear
+proved through biaxial test results conducted by Viggiani                                      band was computed using the equation
+et al. [55]
+                                                                                                         𝜖̇
+   We have presented the evolution of shear band inclina-                                      sin(𝜓) = − vol                                                   (7)
+tion angle, 𝛽 for 00 rake (Test, T1-a) in Fig. 11. We observe                                              𝛾̇
+that the angle fluctuates around a mean value of 310 , which                                   and the corresponding angle of dilation as a function of tool
+is very close to ( 𝜋4 - 2r ), with 𝜙r being the dynamic angle of
+                        𝜙
+                                                                                               displacement is presented in Fig. 12, for case of 00 rake.
+repose of the pile formed in-front of the tool. Similar oscil-                                 Again, as in the case of inclination angle of the shear bands,
+lations in the shear band angle have also been observed by                                     dilation angle was seen to fluctuate from a value close to
+Gravish et al. [27] in their cutting experiments.                                              zero to a maximum of 300 . The mean value corresponding
+   As suggested by [49, 50], the sharp changes in the observed                                 to the velocity characteristics ( 𝜋4 − 𝜓2 ), is close to 360, which
+velocity field of our cutting experiments must in-fact corre-                                  is about 50 degrees greater than measured average inclina-
+spond to the velocity characteristics or the zero extension lines.                             tion angle of the shear band with respect to the horizontal.
+These rupture planes, are inclined at an angle of ( 𝜋4 − 𝜓2 ) to the
+
+
+Fig. 11  Evolution of shear band                                                  60
+inclination angle as observed                                                                                                                     Moving average
+after a cutting distance of 6
+times the initial depth of cut for                                                50
+                                              , Shear Band Inclination(degrees)
+
+
+
+
+the test case-T1a
+
+                                                                                  40
+
+
+                                                                                  30
+
+
+                                                                                  20
+
+
+                                                                                  10
+
+
+                                                                                   0
+                                                                                       0   1         2              3              4              5                6
+                                                                                                 Normalised Tool Displacement (u/D)
+
+
+Fig. 12  Evolution of the                                                         30
+maximum dilation angle within                                                                                                                  Moving Average
+the shear band. The maximum
+value does not exceed 300,                                                        25
+which is close to repose angle
+of the glass beads. The plot cor-
+                                              , Dilation Angle(degrees)
+
+
+
+
+responds to the test case T1a                                                     20
+
+
+                                                                                  15
+
+
+                                                                                  10
+
+
+                                                                                   5
+
+
+                                                                                   0
+                                                                                       0   1         2              3              4              5                6
+                                                                                                  Normalised Tool Displacement (u/D)
+
+
+                                                                                                                                                      13
+ 70      Page 16 of 22                                                                                                             A. Hegde, T. G. Murthy
+
+This clearly implies that the direction of major principal                             is found to be least for the case −400 and maximum for the
+strain rate is not along the horizontal axis but inclined to it,                       case of +400 . We were unable to establish a consistent rela-
+by about 50 on average. The power spectrum of the fluctua-                             tionship between the angle of shear band and different rake
+tions show 1∕f 𝛼 scaling at large frequencies(over short time                          angles used in our study, akin to the ones found in metal cut-
+periods), and is nearly flat at very small frequencies or large                        ting [4], which we suppose can be attributed to role of vol-
+time scales.                                                                           ume change in granular materials as opposed to metals. The
+      A histogram has been plotted (Fig. 13) showing the                               inclination angle did increase significantly with a greater
+deviation of the major principal strain rate from the x-axis.                          depth of cut while a change in the speed of cutting, over five
+We note that the distribution is asymmetric and also, large                            different orders of magnitude, did not have any significant
+fluctuations from the mean value are relatively rare. The                              effect on the measured inclination angle.
+maximum deviation was observed to be around 150 which                                      Determination of shear band thickness
+is in good agreement with the theoretical estimate of                                      We have used the inclination angle measured from our
+( 12 (𝜙 − 𝜓mean )) [49, 51]. From Fig. 12, we can also say that                        previous analysis to determine the thickness of the flow
+the granular material tends towards a critical state with some                         bifurcation. A line perpendicular to the shear plane is con-
+fluctuations when subjected to large deformations, which                               sidered at different locations along its length, similar to the
+can also be inferred by looking at the 𝜖̇ vol values shown in                          one shown in Fig. 14 for the 00 rake. The profile of the slip
+Figs. 7 and 9. Gudehus and Nubel [56] have also observed,                              velocity along such lines is then measured. The slip veloc-
+while working on a biaxial apparatus, that the material                                ity is obtained by performing an orthogonal transformation
+reaches a critical state within the shear band.                                        of the velocity field using the shear band inclination angle
+      Also, Hatamura and Chijiiwa [57] further observed in                             determined previously. It is observed that the slip velocity
+their cutting experiments that the direction of the major prin-                        has a sigmoidal profile across the shear band which can be
+cipal stress coincides with the direction of cutting. Therefore                        fit using the error function
+we can say that in the case of orthogonal cutting of granular
+materials, the average inclination angle of shear bands coin-                          vx� (y� ) = a(1 − erf ((y� − b)∕c)                            (8)
+cides with the Coulomb rupture planes while the directions
+                                                                                       The velocity profile for the case of 00 rake, along with the
+of major principal stresses and strain rates do not coincide.
+                                                                                       corresponding error function fit is shown in Fig. 15. The
+The plastic flow within the shear band is in a non-associative
+                                                                                       coefficient ’c’ in Eq. 8 gives the extent over which the jump
+state.
+                                                                                       occurs. This value has been considered as the thickness of
+      A similar analysis was carried out for the different param-
+                                                                                       the shear band. This way of determining the thickness of
+eters used in our program. The measured temporal averages
+                                                                                       shear band has been used previously by [58, 59]. A spatial
+are presented in Table 2 (averages have been taken over
+                                                                                       average is first computed over a window constructed around
+the last 150 frames (3D)). The shear band inclination does
+                                                                                       the shear band (Appendix 2). The procedure was repeated
+depend on the rake angle of the tool. The inclination angle
+
+
+Fig. 13  Histogram showing                                          25
+the deviation of the major
+principal strain rate axis from
+the horizontal x-axis. The figure
+corresponds to the test case T1a                                    20
+                                         Frequency(No. of frames)
+
+
+
+
+                                                                    15
+
+
+
+                                                                    10
+
+
+
+                                                                     5
+
+
+
+                                                                     0
+                                                                         -200   -150         -100         -50           00        50           100
+
+
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                                                  Page 17 of 22    70
+
+        0                                                                                                  for all the frames to obtain the evolution of shear band thick-
+                                                                                                           ness, which has been plotted in Fig. 16. As in the case of
+                                                                                                           shear band inclination angle, fluctuations are observed in
+       10                                                                                                  the measured values of thickness (between 3 and 6 ×dp ).
+                                                                                                           Figure 16 corresponds to profile taken at the midpoint of
+                                                                                                           the shear band.
+Y/dp
+
+
+
+
+                                                                                                              The shear band thickness measured for different test
+       20
+                                                                                                           cases is reported in Table 2. We observed that thickness
+                                                                                                           of the shear band does not vary much with changes in rake
+                                                                                                           angle(both positive and negative), for a different depth of
+       30
+            0      10           20          30                                                  40   50
+                                                                                                           cut, and also for different cutting speeds. Also we would like
+                                     X/dp                                                                  to point out that the measured values of shear band thickness
+                                                                                                           in our study is in fact much lower than the theoretical value
+                                                                                                           of 16dp reported by [60] which was arrived at based on a
+Fig. 14  Sample line, perpendicular to the shear band, used to meas-
+ure the velocity profile across the shear band                                                             bifurcation analysis performed on the equilibrium equations
+                                                                                                           for a Cosserat continuum. It is also lower than most of the
+                                                                                                           experimentally reported values for the shear band thickness
+
+
+
+
+Fig. 15  Velocity profile as                                                                                                               Velocity profile across shear band
+measured along the line shown                                                           1                                                  Error function fit
+                                              Normalised Slip Velocity, vx'(y')/vs
+
+
+
+
+in Fig. 14. It has a sigmoidal
+profile and an error function
+has been used to fit the velocity
+profile and obtain the thickness
+of the shear band
+
+                                                                                       0.5
+
+
+
+
+                                                                                        0
+
+                                                                                         -20              -10                  0                    10                       20
+                                                                                                     Normalized distance-Perpendicular to shear band, y'/dp
+
+Fig. 16  Shear Band Thickness                                                          10
+measured over a tool displace-                                                                                                                   ts/dp    Moving average
+                                              Normalised Shear Band Thickness(ts/dp)
+
+
+
+
+ment of 6×D. Thickness
+fluctuates around a mean value                                                          8
+of 5dp,dp being the particle size.
+The plot corresponds to the test
+case T1a
+                                                                                        6
+
+
+
+                                                                                        4
+
+
+
+                                                                                        2
+
+
+
+                                                                                        0
+                                                                                            0        1            2            3             4               5                  6
+                                                                                                             Normalised Tool Displacement (u/D)
+
+
+                                                                                                                                                                  13
+ 70      Page 18 of 22                                                                                            A. Hegde, T. G. Murthy
+
+Table 2  Measured values of       Test     Dilation angle   Inclination angle   Normalized Shear Band Average orientation of
+mean dilation angle, shear band            (degrees) 𝜓      (degrees) 𝛽         Thickness ts ∕dp      𝜖m ajor with respect to x-axis
+angle and thickness(Temporal                                                                          (degrees)
+average)
+                                  T1-a     16.1             31.4                5                       −5
+                                  T1-b     16.8             22.6                5.4                     − 14
+                                  T1-c     14.9             23                  4                       − 14.7
+                                  T1-d     14               18.5                4.5                     − 18.6
+                                  T1-e     14.6             37.6                6                       − 0.23
+                                  T2-a     14.2             31.2                4.9                     − 6.2
+                                  T2-b     20.9             36                  5.1                     1.9
+                                  T2-c     13.9             31.7                5                       − 5.8
+                                  T2-d     10.9             29.3                6.1                     − 9.5
+                                  T2-e     15.7             28.6                5.5                     − 8.5
+                                  T3-a     18.3             38                  5.8                     2.3
+
+
+
+
+found in literature [49, 55, 61, 62] which is typically around     – The bifurcation typically occurs at an angle from the
+10∼20d50. Oda and Kazama [63] have reported a shear band             cutting direction and extends towards the free surface,
+thickness value of 7–8d50 for plane strain experiments on            which was observed to fluctuate around a mean value, as
+sand.                                                                the cutting progressed. The angle of inclination, which
+                                                                     was measured for each frame using the Standard Hough
+                                                                     Transforms, was found to be minimum for the case of
+5 Conclusions                                                       −400 tool and maximum for the case of +400 tool. There
+                                                                     was only a marginal change in the mean values of incli-
+The major observations from our cutting experiments can be           nation angle at different cutting speeds but a significant
+summarized as follows                                                change was observed at a higher depth of cut. For the
+                                                                     case of 00 rake, we found that the inclination angle coin-
+– Velocity fields obtained from PIV show a bifurcation in            cides with Coulomb rupture planes, 𝜃C.
+  flow at the tool tip during orthogonal cutting of granular       – As the velocity bifurcation correspond to velocity charac-
+  materials. The bifurcation in flow is initiated by particles       teristics, from our study we can conclude that the direc-
+  sliding and rolling over one another as they approach the          tion of major principal compressive strain rate continu-
+  tool, with some particles moving upwards along the rake            ously rotates with the progress of cutting. Also in most
+  face and forming a pile in-front of the tool, while others         cases it does not align with the direction of cutting, which
+  are pushed below the tool and continue to be a part of the         also the direction of major principal stress and the maxi-
+  original bulk flow. By measuring the free surface angle of         mum deviation is ∼ 150.
+  the pile, one can determine the repose angle of the mate-        – Shear bands can be further characterized by their thick-
+  rial which is 300 for the glass beads used in this research        ness and similar to the angle of inclination, it was
+  work. The repose angle is not altered by changing the              observed to slightly vary in size continuously through-
+  rake angle of the tool or the cutting speed.                       out the cutting process. The time averaged thickness of
+– Bifurcation regions are regions of velocity jumps, gener-          the shear bands was typically in the range of 4–6dp for
+  ally called as shear bands due to their band like appear-          the different rake angles, cutting speeds and depth of cut
+  ance and are characterized by extreme build up of strain           employed in this work.
+  rate across this junction, by almost 2–2.5 times the             – Localization is stronger near the tool tip and tends to
+  imposed strain rate on the system. The deformation is              diffuse as the bands approach the free surface. After
+  localized spatially and hence inhomogeneous, rendering             prolonged cutting, periods of localization are typically
+  any sort of boundary measurements meaningless.                     followed by periods of diffusion of strain within the pile.
+– Volumetric strain rate within the shear bands is much            – The maximum dilation angle within the shear band also
+  lower than the effective strain rate 𝜖̇ eff . We also observe      vary temporally, fluctuating from a maximum value of
+  alternating bands of compaction and dilation in the con-           300-which is close to the dynamic angle of repose of the
+  tour maps of volumetric strain rate, running parallel to
+  one another.
+
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                    Page 19 of 22   70
+
+  pile-to a value close to zero. This proves that the plastic                We can consider 𝜃 to range over [−𝜋∕2 , 𝜋∕2 ] and if the
+  flow within the shear band is in a non associative state.                  length of√binary image √ is L and width W, then 𝜌 can range
+– Orthogonal cutting/ploughing geometry is an extremely                      over [− L2 + W 2 , L2 + W 2 ]. This allows us to construct
+  useful boundary value problem to delve into some inter-                    a matrix, called the ’accumulator matrix’,  √ with dimensions
+  esting and fundamental aspects of granular behavior like                   [-𝜌m , 𝜌m ] × [− 𝜋∕2 , 𝜋∕2 ], where 𝜌m = L2 + W 2 and each
+  the nature of shear banding phenomenon involving a                         bin of this matrix corresponds to a possible line in our binary
+  phase transition between fluid and solid states of granular                image. Now for every "non zero" pixel in our binary image
+  material, the rotation of major principal axis of deforma-                 with position [X,Y] from an arbitrarily chosen origin, we
+  tion and general non-associativity between the stress and                  increment 𝜃 in discrete steps starting from -𝜋∕2 to 𝜋∕2, and
+  strain rate during plastic flow confined to the shear bands.               compute the corresponding 𝜌 values and fill the accumulator
+                                                                             matrix accordingly(increment the bin corresponding to near-
+In summary, high resolution measurements using PIV has                       est value of computed 𝜌 for each 𝜃). This results in a sinusoi-
+provided us with quantitative information on the flow of                     dal curve in the ’Hough Space’ defined by (𝜌, 𝜃 ). If we have
+granular materials during orthogonal cutting. The infor-                     several points in our binary image lying along a line, then
+mation obtained in our current study has a direct bearing                    this leads to accumulation of values at a particular bin in the
+on both the fundamental aspects of granular behavior and                     accumulator matrix. Or, we can also say that if such peaks
+as well as geotechnical applications. It is well known fact                  do exist in the Hough Space(accumulator matrix), then it
+that unlike metals, there is no strong correlation between                   implies that there is a very high chance that it corresponds
+the observed stress fields and deformation fields due to                     to a line in our binary image.
+non-associativity in the flow rules. Hence the deformation                       We have employed the ’hough’ command from MATLAB
+fields obtained in this study should be useful in exploring                  to perform Hough transforms to identify and extract regions
+the mechanics comprehensively, and also validate theories                    corresponding to shear bands in our analysis. We have chosen
+based on upper bound solutions. Visualization of the veloc-                  to explain our procedure pictorially for simplicity sake.
+ity and strain fields around the tool could also help us in                      The matrix corresponding to the shear rate values was
+understanding the simple nature of RFT proposed by [28]                      interpolated on a grid with a spacing equal to the particle size
+when considering the movement of intruders in granular                       (Fig. 17a) which was then converted to a gray scale image
+media. During the cutting process, granular materials exists                 Fig. 17b (We can also set a threshold while performing this
+simultaneously in two different phases of matter indicating                  operation).This image was then further binarized as shown in
+a intricate physical phenomenon underlying this important                    Fig. 17c.
+engineering problem. Hence studying the problem of orthog-                       Then a Hough transformation is performed on the binary
+onal cutting of granular materials could also help us in gain-               image. The resulting accumulator matrix is shown in Fig. 18.
+ing a good understanding of soil behavior at multiple length                 We can also manually choose to look for lines oriented along
+scales. From an engineering point of view, quantification of                 a particular direction by manually setting the 𝜃 range. A peak
+different aspects of the deformation field would enable us                   is observed in the Hough space at 𝜃 = 450 (highlighted in the
+to come up with a better design for tools used in earthmov-                  Fig. 18 by a blue circle). We have transformed 𝜃 axis of the
+ing processes. Information on the extent of deformation                      Hough space to 90+𝜃 as 𝜃 in MATLAB corresponds to angle
+observed during such a process is also extremely helpful in                  of the perpendicular from the ’origin’ to the ’shear band line’ in
+designing projects which involve mobilizing only a desired                   our binary image, with respect to the X-axis We also observe
+region of soil mass with rest of the region undisturbed. Also,               other regions in Hough space with very high values(most nota-
+the deformation fields can be helpful in designing wheels                    bly around 900 and and 1600 which correspond to shear bands
+moving on sandy terrains.                                                    along the tool interface and the free surface of the pile). When
+                                                                             the shear bands are curved, the Hough transforms can only
+                                                                             extract the portion of the shear band which is straight.
+                                                                                 This transformation allowed us to very easily isolate the
+Appendix 1: Standard Hough                                                   shear band and find out its inclination angle with respect to the
+Transformation (SHT)                                                         X-axis as well as its length. The line extracted is shown first by
+                                                                             overlaying it on the binary image (Fig. 19a) and subsequently
+SHT in essence is a binning/voting operation. The central                    on the initial contour field map (Fig. 19b) that we started with
+idea behind the transformation is that for each pixel of a                   in Fig. 17a. We have also shown this line by overlaying it on
+binary image we can associate infinite number of lines                       the velocity field map in Fig. 14. We observe that the Hough
+parameterized by                                                             transform does a very good job in extracting the shear bands
+                                                                             from our strain rate contour maps.
+𝜌 = Xcos(𝜃) + Ysin(𝜃)                                                (9)
+
+
+                                                                                                                                   13
+ 70      Page 20 of 22                                                                                                                A. Hegde, T. G. Murthy
+
+Fig. 17  a Sample image chosen
+to perform SHT. b Gray scale
+                                           10                                                               10
+image obtained based on a
+threshold value set on the
+                                                                                                            20
+contour levels. c Binary image
+obtained from the Gray scale
+
+
+
+
+                                   Y/d p
+
+
+
+
+                                                                                                    Y/d p
+image                                      30                                                               30
+
+                                                                                                            40
+
+                                           50                                                               50
+
+                                                                                                            60
+                                                        10    30          50           70                          10    20    30   40    50   60    70   80
+                                                                   X/dp                                                             X/d p
+
+                                                                   (a)                                                              (b)
+
+
+                                                                             10
+
+
+
+                                                                     Y/d p   30
+
+
+
+
+                                                                             50
+
+
+                                                                                  10        30              50          70
+                                                                                                  X/dp
+
+                                                                                                  (c)
+
+
+Fig. 18  Hough Transform cor-          -100
+responding to Fig. 17a. We see
+a very clear peak in the accumu-
+lator matrix at an angle of 450
+(highlighted by a blue circle),            -50
+corresponding to the shear band
+of our binary image, Fig. 17c
+
+                                                0
+
+
+
+                                            50
+
+
+
+                                           100
+                                                    0        20          40        60        80              100         120        140        160        180
+                                                                                                 (degrees)
+
+
+
+
+13
+Experimental studies on deformation of granular materials during orthogonal cutting﻿	                                             Page 21 of 22     70
+
+Fig. 19  a Line corresponding
+to 450 angle in Fig. 18, obtained
+                                                      10                                                        10
+using Hough transform, overlaid
+on the binary image, Fig. 17c.
+Same line overlaid on the initial
+shear rate contour field, Fig. 17a
+
+
+
+
+                                              Y/d p
+
+
+
+
+                                                                                                        Y/d p
+                                                      30                                                        30
+
+
+
+
+                                                      50                                                        50
+
+
+                                                           10          30         50        70                       10      30          50       70
+                                                                            X/dp                                                  X/dp
+
+                                                                            (a)                                                    (b)
+
+
+
+Appendix 2: Spatial averaging                                                     Acknowledgements This work is supported by SERB, Government of
+                                                                                  India through grant EMR-2017-003375.
+
+To determine the average spatial thickness of the shear band
+using the error function fit, we consider a window with at-                       Declarations
+least 10 particles in both the directions. Then we place a
+                                                                                  Conflict of interest The authors declare that they have no conflict of
+grid with a spacing of around one particle size. This allows                      interest.
+us to determine the profile across the height of the window,
+shown in Fig 20. For dilation angles presented in this work,
+we consider the maximum value of shear and volumetric                             References
+strain rate across this window, obtained after performing
+the spatial averaging.                                                             1. Hill, R.: On the limits set by plastic yielding to the intensity of
+                                                                                      singularities of stress. J. Mech. Phys. Solids 2(4), 278 (1954)
+                                                                                   2. Kudo, H.: Some new slip-line solutions for two-dimensional
+                                                                                      steady-state machining. Int. J. Mech. Sci. 7(1), 43 (1965)
+                                                                                   3. Dewhurst, P., Collins, I.: A matrix technique for constructing slip-
+                                                                                      line field solutions to a class of plane strain plasticity problems.
+                 100                                                                  Int. J. Numer. Meth. Eng. 7(3), 357 (1973)
+                                                                                   4. Kovrizhnykh, A.: Determining the shear angle, forces, and sizes
+                                                                                      of shearing elements during metal cutting. J. Appl. Mech. Tech.
+                                                                                      Phys. 50(1), 147 (2009)
+                 300                                                               5. Reece, A.R.: Principles of soil-vehicle mechanics. Proc. Inst.
+                                                                                      Mech. Eng. Automob. Div. 180(1), 45 (1965)
+                                                                                   6. Hettiaratchi, D., Reece, A.: The calculation of passive soil resist-
+     y(pixels)
+
+
+
+
+                                                                                      ance. Geotechnique 24(3), 289 (1974)
+                 500                                                               7. Terzaghi, K.: Theoretical Soil Mechanics, pp. 11–15. Wiley, New
+                                                                                      York (1943)
+                                                                                   8. McKyes, E., Ali, O.: The cutting of soil by narrow blades. J. Ter-
+                 700                                                                  rramech. 14(2), 43 (1977)
+                                                                                   9. Swick, W., Perumpral, J.: A model for predicting soil-tool interac-
+                                                                                      tion. J. Terrramech. 25(1), 43 (1988)
+                                                                                  10. Dechao, Z., Yusu, Y.: A dynamic model for soil cutting by blade
+                 900                                                                  and tine. J. Terrramech. 29(3), 317 (1992)
+                       200   400     600     800       1000     1200              11. Hambleton, J.P., Stanier, S., White, D.J., Sloan, S.W.: Modelling
+                                     x(pixels)                                        ploughing and cutting processes in soils. Australian Geomech.
+                                                                                      49(4), 147 (2014)
+                                                                                  12. Kashizadeh, E., Hambleton, J., Stanier, S.: in Computer Meth-
+Fig. 20  A sample window shown in blue, constructed around the                        ods and Recent Advances in Geomechanics: Proceedings of
+shear band region for computing the spatial average                                   the 14th International Conference of International Association
+                                                                                      for Computer Methods and Recent Advances in Geomechanics,
+                                                                                      2014 (IACMAG 2014) (Taylor & Francis Books Ltd, 2015), pp.
+                                                                                      159–164
+                                                                                  13. Van Os, A., Van Leussen, W.: Basic research on cutting forces in
+                                                                                      saturated sand. J. Geotech. Eng. 113(12), 1501 (1987)
+
+
+
+                                                                                                                                              13
+ 70      Page 22 of 22                                                                                                        A. Hegde, T. G. Murthy
+
+14. Miedema, S.: Mathematical Modelling of the Cutting of Densely                used in digital image correlation. Opt. Lasers Eng. 48(4), 469
+    Compacted Sand Under Water. Dredg. Port Constr. 7, 22 (1985)                 (2010)
+15. Palmer, A.: Speed effects in cutting and ploughing. Geotechnique       39.   Thomsen, E.G. , Yang, C.T. , Kobayashi, S.: 1965. 486 P. THE
+    49(3), 285 (1999)                                                            MACMILLAN COMPANY, 60 FIFTH AVE., NEW YORK, N.
+16. Yong, R., Hanna, A.: Finite element analysis of plane soil cutting.          Y. 10011 (1965)
+    J. Terrramech. 14(3), 103 (1977)                                       40.   Adrian, L., Adrian, R.J., Westerweel, J.: Particle Image Velocime-
+17. Kushwaha, R., Shen, J.: Finite element analysis of the dynamic               try. Particle Image Velocimetry. 30. Cambridge University Press,
+    interaction between soil and tillage tool. Trans. ASAE 38(5), 1315           Cambridge (2011)
+    (1995)                                                                 41.   Raffel, M., Willert, C.E., Scarano, F., Kähler, C.J., Wereley, S.T.,
+18. Szymanski, J.K., Balideh, S., Suglo, R.S., Planeta, S.: Determina-           Kompenhans, J.: Particle Image Velocimetry: A Practical Guide.
+    tion of the cutting resistance model of soil. Int. J. Min. Mineral           Springer, New York (2018)
+    Eng. 3(3), 220 (2011)                                                  42.   Campbell, C.S.: Self-diffusion in granular shear flows. J. Fluid
+19. Duncan, J.M., Chang, C.Y.: Nonlinear analysis of stress and strain           Mech. 348, 85 (1997)
+    in soils. J. Soil Mech. Found. Div. 96, 1629–53 (1970)                 43.   Kumaran, V.: Dynamics of dense sheared granular flows. Part 1.
+20. Abo-Elnor, M., Hamilton, R., Boyle, J.: Simulation of soil-blade             Structure and diffusion. J. Fluid Mech. 632, 109 (2009)
+    interaction for sandy soil using advanced 3D finite element analy-     44.   Sokolovskii, V.V.: Statics of Granular Media. Statics of Granular
+    sis. Soil Tillage Res. 75(1), 61 (2004)                                      Media. Elsevier, Amsterdam (2016)
+21. Nouguier, C., Bohatier, C., Moreau, J.J., Radjai, F.: Force fluctua-   45.   Lesniewska, D., Wood, D.M.: Observations of stresses and strains
+    tions in a pushed granular material. Granul. Matter 2(4), 171 (2000)         in a granular material. J. Eng. Mech. 135(9), 1038 (2009)
+22. Asaf, Z., Rubinstein, D., Shmulevich, I.: Determination of discrete    46.   Kobayakawa, M., Miyai, S., Tsuji, T., Tanaka, T.: Local dilation
+    element model parameters required for soil tillage. Soil Tillage             and compaction of granular materials induced by plate drag. Phys.
+    Res. 92(1–2), 227 (2007)                                                     Rev. E 98(5), 052907 (2018)
+23. Ding, Y., Gravish, N., Goldman, D.I.: Drag induced lift in granular    47.   Schofield, A.N., Wroth, P.: Critical State Soil Mechanics, vol. 310.
+    media. Phys. Rev. Lett. 106(2), 028001 (2011)                                McGraw-hill, London (1968)
+24. Obermayr, M., Dressler, K., Vrettos, C., Eberhard, P.: Predic-         48.   Duda, R.O., Hart, P.E.: Use of the Hough transformation to detect
+    tion of draft forces in cohesionless soil with the discrete element          lines and curves in pictures. Commun. ACM 15(1), 11 (1972)
+    method. J. Terrramech. 48(5), 347 (2011)                               49.   Roscoe, K.H.: The influence of strains in soil mechanics. Geotech-
+25. Mak, J., Chen, Y.: Simulation of draft forces of a sweep in a loamy          nique 20(2), 129 (1970)
+    sand soil using the discrete element method. Can. Biosyst. Eng.        50.   James, R., Bransby, P.: A velocity field for some passive earth
+    56, 2.1–2.7 (2014)                                                           pressure problems. Geotechnique 21(1), 61 (1971)
+26. Coetzee, C.: Discrete and continuum modelling of soil cutting.         51.   Arthur, J., Dunstan, T., Al-Ani, Q., Assadi, A.: Plastic deformation
+    Comput. Particle Mech. 1(4), 409 (2014)                                      and failure in granular media. Geotechnique 27(1), 53 (1977)
+27. Gravish, N., Umbanhowar, P.B., Goldman, D.I.: Force and flow           52.   Vermeer, P.: The orientation of shear bands in biaxial tests. Geo-
+    transition in plowed granular media. Phys. Rev. Lett. 105(12),               technique 40(2), 223 (1990)
+    128301 (2010)                                                          53.   Alshibli, K.A., Sture, S.: Shear band formation in plane strain
+28. Li, C., Zhang, T., Goldman, D.I.: A terradynamics of legged loco-            experiments of sand. J. Geotech. Geoenviron. Eng. 126(6), 495
+    motion on granular media. Science 339(6126), 1408 (2013)                     (2000)
+29. Askari, H., Kamrin, K.: Intrusion rheology in grains and other         54.   Vardoulakis, I.: Shear band inclination and shear modulus of sand
+    flowable materials. Nat. Mater. 15(12), 1274 (2016)                          in biaxial tests. Int. J. Numer. Anal. Meth. Geomech. 4(2), 103
+30. Robinson, S., Brown, M.J., Matsui, H., Brennan, A., Augarde,                 (1980)
+    C., Coombs, W., Cortis, M.: Centrifuge testing to verify scaling       55.   Viggiani, G., Küntz, M., Desrues, J.: Continuous and Discon-
+    of offshore pipeline ploughs. Int. J. Phys. Model. Geotech. 19(6),           tinuous Modelling of Cohesive-Frictional Materials, pp. 111–127.
+    305 (2019)                                                                   Springer, New York (2001)
+31. Kandasami, R.K., Murthy, T.G.: Manifestation of particle mor-          56.   Gudehus, G., Nübel, K.: Evolution of shear bands in sand. Geo-
+    phology on the mechanical behaviour of granular ensembles.                   technique 54(3), 187 (2004)
+    Granul. Matter 19(2), 21 (2017)                                        57.   Hatamura, Y., Chijiiwa, K.: Analysis of the mechanism of soil: 1st
+32. White, D., Take, W., Bolton, M.: Soil deformation measurement                report. Cutting patterns of soils. Bull. JSME 18(120), 619 (1975)
+    using particle image velocimetry (PIV) and photogrammetry. Soil        58.   Nedderman, R., Laohakul, C.: The thickness of the shear zone of
+    deformation measurement using particle image velocimetry (PIV)               flowing granular materials. Powder Technol. 25(1), 91 (1980)
+    and photogrammetry. Geotechnique 53(7), 619 (2003)                     59.   Fenistein, D., van de Meent, J.W., van Hecke, M.: Universal and
+33. White, D., Bolton, M.: Displacement and strain paths during                  wide shear zones in granular bulk flow. Phys. Rev. Lett. 92(9),
+    plane-strain model pile installation in sand. Géotechnique 54(6),            094301 (2004)
+    375 (2004)                                                             60.   Mühlhaus, H.B., Vardoulakis, I.: The thickness of shear bands in
+34. MATLAB: 9.7.0.1190202 (R2019b). The MathWorks Inc., Natick                   granular materials. Geotechnique 37(3), 271 (1987)
+    (2018)                                                                 61.   Vardoulakis, I., Graf, B.: Calibration of constitutive models for
+35. Murthy, T., Huang, C., Chandrasekar, S.: Characterization of                 granular materials using data from biaxial experiments. Géotech-
+    deformation field in plane-strain indentation of metals. J. Phys. D          nique 35(3), 299 (1985)
+    Appl. Phys. 41(7), 074026 (2008)                                       62.   Alshibli, K.A., Sture, S.: Sand shear band thickness measurements
+36. Murthy, T.G., Gnanamanickam, E., Chandrasekar, S.: Deforma-                  by digital imaging techniques. J. Comput. Civ. Eng. 13(2), 103
+    tion field in indentation of a granular ensemble. Phys. Rev. E               (1999)
+    85(6), 061306 (2012)                                                   63.   Oda, M., Kazama, H.: Microstructure of shear bands and its rela-
+37. Stanier, S., Dijkstra, J., Leśniewska, D., Hambleton, J., White, D.,         tion to the mechanisms of dilatancy and failure of dense granular
+    Wood, D.M.: Vermiculate artefacts in image analysis of granular              soils. Geotechnique 48(4), 465 (1998)
+    materials. Comput. Geotech. 72, 100 (2016)
+38. Pan, B., Lu, Z., Xie, H.: Mean intensity gradient: an effective        Publisher's Note Springer Nature remains neutral with regard to
+    global parameter for quality assessment of the speckle patterns        jurisdictional claims in published maps and institutional affiliations.
+
+
+13
+
