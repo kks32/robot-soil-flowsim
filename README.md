@@ -18,6 +18,23 @@ python test_simple_trench.py        # Trench on flat bed
 python trenching_dynamic.py        # Blade motion + transient flow
 ```
 
+## JAX SWE Simulator (mu(I) + DRFT)
+
+Differentiable shallow-water granular flow with mu(I) rheology and dynamic resistive force tool forcing.
+Equations and assumptions are documented in `SWE_JAX_MODEL.md`.
+
+```bash
+# Run the JAX trench demo
+python swe_trench_jax.py
+```
+
+Optional Metal backend (Apple Silicon):
+
+```bash
+uv pip install jax-metal
+export JAX_PLATFORMS=metal
+```
+
 ## Core Files
 
 1. **`sand_simulator.py`** - Main simulator class
@@ -25,6 +42,8 @@ python trenching_dynamic.py        # Blade motion + transient flow
 3. **`test_simple_trench.py`** - Demo: trench cuts into flat bed, sides avalanche in
 4. **`requirements.txt`** - Dependencies (numpy, matplotlib)
 5. **`.gitignore`** - Git ignore file (excludes .venv, __pycache__, *.png)
+6. **`swe_simulator_jax.py`** - Differentiable SWE simulator with mu(I) + DRFT
+7. **`swe_trench_jax.py`** - Trench excavation demo (JAX)
 
 ## Algorithm
 
